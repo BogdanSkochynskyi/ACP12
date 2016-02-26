@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 
 
 public class Scanner implements IScanner {
-    private final static int DEFAULT_CAPACITY = 1024;
+    private final static int DEFAULT_CAPACITY = 2048;
     private Reader reader;
     private char[] buffer = new char[DEFAULT_CAPACITY];
     private int start = 0;
@@ -119,7 +119,7 @@ public class Scanner implements IScanner {
         String res = "";
         if (hasNextInt()) {
             for (int i = start; i < end; i++) {
-                if (buffer[i] > '\u0030' && buffer[i] < '\u0039') {
+                if (buffer[i] >= '\u0030' && buffer[i] <= '\u0039') {
                     res += buffer[i];
                 } else {
                     throw new NumberFormatException();
