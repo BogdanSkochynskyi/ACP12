@@ -12,8 +12,10 @@ public class ManualTest {
         System.out.print("Enter 'Oleg yo' - ");
         String nextLine = scanner.nextLine();
         System.out.print("Enter '555' - ");
-        int num1 = scanner.nextInt();
-
+        int num1 = 0;
+        if(scanner.hasInt()){
+            num1 = scanner.nextInt();
+        }
         if(next.equals("Oleg")){
             if(nextLine.equals("Oleg yo\n")){
                 if(num1 == 555){

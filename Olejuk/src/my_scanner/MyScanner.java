@@ -11,6 +11,7 @@ public class MyScanner implements Closeable{
     private Reader reader;
     private StringBuilder strBuilder = new StringBuilder();
     private char delimiter = ' ';
+    private Integer intBuffer;
 
     public MyScanner(InputStream source){
             reader = new InputStreamReader(source);
@@ -67,10 +68,16 @@ public class MyScanner implements Closeable{
     }
 
     public int nextInt(){
+        if(intBuffer != null){
+            int out = intBuffer;
+            intBuffer = null;
+            return out;
+        }
         return Integer.parseInt(next());
     }
 
     public boolean hasNext(){
+
         if(strBuilder.length() == 0 || strBuilder.charAt(0) == '\u0000'){
             return false;
         }
@@ -79,8 +86,7 @@ public class MyScanner implements Closeable{
 
     public boolean hasInt(){
         try{
-            String futureInt = strBuilder.substring(0, strBuilder.indexOf(String.valueOf(delimiter)));
-            Integer.parseInt(String.valueOf(futureInt));
+            intBuffer = new Integer(next());
         } catch (Exception e){
             return false;
         }

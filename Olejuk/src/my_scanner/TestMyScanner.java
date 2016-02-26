@@ -29,6 +29,14 @@ public class TestMyScanner {
     }
 
     @Test
+    public void testHasInt() throws Exception{
+        MyScanner scanner = new MyScanner(new File("./resources/nextIntTestFile.txt"));
+        if(scanner.hasInt()){
+            Assert.assertEquals(123, scanner.nextInt());
+        }
+    }
+
+    @Test
     public void testHasNext() throws Exception{
         MyScanner scanner = new MyScanner(new File("./resources/nextLineTestFile.txt"));
         MyScanner scanner2 = new MyScanner(new File("./resources/emptyFile.txt"));
