@@ -85,18 +85,19 @@ public class MyScanner {
         return null;
     }
 
-    private void updateBuffer(){
+    private boolean updateBuffer(){
+        if (reader == null) return false;
         int count = 0;
         try {
             while ((count = reader.read(buffer,0,buffer.length))!= -1) {
                 if (data == null) data = new char[count];
                 System.arraycopy(buffer, 0, data, 0, count);
-                return;
+                return true;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        return  false;
     }
 
 
@@ -111,11 +112,13 @@ public class MyScanner {
             }
         }
         if (currentPosition == data.length){
-                updateBuffer();
+               if (updateBuffer()){
                 currentPosition = 0;
                 currentStartPosition = 0;
 
-            return nextUsingUpdate();
+                    return nextUsingUpdate();
+               }
+
         }
         return null;
     }
