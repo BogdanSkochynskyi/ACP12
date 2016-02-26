@@ -64,7 +64,7 @@ public class MyScanner implements Closeable{
     public String nextLine(){
         read();
         for (int i = 0; i < dataLine.length();) {
-            if (dataLine.substring(i, i+1).equals("\n")) {
+            if (dataLine.substring(i, i+1).equals(".") || dataLine.substring(i, i+1).equals("\n")) {
                 return dataLine.substring(0, i);
             } else i++;
         }
