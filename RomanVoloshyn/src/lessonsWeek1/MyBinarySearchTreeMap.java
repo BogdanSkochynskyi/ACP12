@@ -1,11 +1,8 @@
 package lessonsWeek1;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-public class MyBinarySearchTreeMap<K extends Comparable, V> implements Map<K, V>{
+public class MyBinarySearchTreeMap<K extends Comparable, V> implements Map<K, V> {
 
     private Node root;
     private int size;
@@ -79,8 +76,9 @@ public class MyBinarySearchTreeMap<K extends Comparable, V> implements Map<K, V>
                 return oldV;
             }
         }
-        
+
     }
+
     private Node binarySearch(K searchKey) {
 
         Node curNode = root;
@@ -97,7 +95,7 @@ public class MyBinarySearchTreeMap<K extends Comparable, V> implements Map<K, V>
 
         return curNode;
     }
-    
+
     @Override
     public V remove(Object key) {
         return null;
@@ -128,25 +126,25 @@ public class MyBinarySearchTreeMap<K extends Comparable, V> implements Map<K, V>
         return null;
     }
 
-    private class Node{
-        
+    private class Node {
+
         K key;
         V value;
         Node parent = null;
         Node leftChild = null;
         Node rightChild = null;
-        
+
         public Node(K key, V value) {
             this.key = key;
             this.value = value;
         }
-        
+
         public Node(K key, V value, Node parent) {
             this.key = key;
             this.value = value;
             this.parent = parent;
         }
-        
+
     }
-    
+
 }
