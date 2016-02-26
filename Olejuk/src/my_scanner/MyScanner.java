@@ -10,7 +10,7 @@ public class MyScanner implements Closeable{
     private final static int DEFAULT_BUFFER_CAPACITY = 1024;
     private Reader reader;
     private StringBuilder strBuilder = new StringBuilder();
-    private char delimiter = ' ';
+    private String delimiter = " ";
     private Integer intBuffer;
 
     public MyScanner(InputStream source){
@@ -52,8 +52,8 @@ public class MyScanner implements Closeable{
         }
         String out = "";
         try{
-            out = strBuilder.substring(0, strBuilder.indexOf(String.valueOf(delimiter)));
-            strBuilder.delete(0, strBuilder.indexOf(String.valueOf(delimiter))+1);
+            out = strBuilder.substring(0, strBuilder.indexOf(delimiter));
+            strBuilder.delete(0, strBuilder.indexOf(delimiter)+1);
         }catch (StringIndexOutOfBoundsException e){
             out = strBuilder.substring(0, strBuilder.indexOf("\n"));
             strBuilder.delete(0, strBuilder.indexOf("\n"));
@@ -62,7 +62,7 @@ public class MyScanner implements Closeable{
         return out;
     }
 
-    public void useDelimiter(char newDelimiter){
+    public void useDelimiter(String newDelimiter){
         delimiter = newDelimiter;
     }
 
