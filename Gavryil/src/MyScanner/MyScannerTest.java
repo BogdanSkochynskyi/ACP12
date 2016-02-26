@@ -47,5 +47,13 @@ public class MyScannerTest {
         System.out.println(scString.nextUsingUpdate());
         System.out.println(scString.nextUsingUpdate());
 
+        System.out.println("****************************************");
+
+
+        Reader reader1 = new InputStreamReader(new FileInputStream("\\ACP\\ACP12\\Gavryil\\src\\tmp\\try2.txt"));
+        MyScanner sc3 = new MyScanner(reader1);
+        System.out.println(sc3.nextUsingUpdate());
+
+
     }
 }

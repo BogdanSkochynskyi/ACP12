@@ -9,12 +9,35 @@ import java.io.Reader;
 public class MyScanner {
 
     char[] data = null;
-    char[] buffer = new char[10];
+    char[] buffer = new char[100];
     int currentStartPosition;
     int currentPosition;
     Reader reader;
 
 
+    public MyScanner (String text){
+
+        data = text.toCharArray();
+
+    }
+
+    public MyScanner(Reader reader){
+
+        this.reader = reader;
+        int count = 0;
+        try {
+            while ((count = reader.read(buffer,0,buffer.length))!= -1){
+                System.arraycopy(buffer,0,data = new char[count],0,count);
+                return;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+// Constructor which allows you to download whole file to char[] during creation of MyScanner object
    /* public MyScanner(Reader reader){
         this.reader = reader;
         int count = 0;
@@ -45,27 +68,11 @@ public class MyScanner {
         }
     }*/
 
-    public MyScanner (String text){
 
-        data = text.toCharArray();
 
-    }
+    //Method next which works only with constructor which save whole file to char array during MyScanner creation
 
-    public MyScanner(Reader reader){
-        this.reader = reader;
-        int count = 0;
-        try {
-            while ((count = reader.read(buffer,0,buffer.length))!= -1){
-                System.arraycopy(buffer,0,data = new char[count],0,count);
-                return;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public String next(){
+   /* public String next(){
         for (; currentPosition < data.length; currentPosition++){
             if (data[currentPosition] == ' '|| data[currentPosition] == Character.LINE_SEPARATOR){
                 char[] tmpArray = new char[currentPosition-currentStartPosition];
@@ -83,13 +90,13 @@ public class MyScanner {
             return new String(tmpArray);
         }
         return null;
-    }
+    }*/
 
     private boolean updateBuffer(){
         if (reader == null) return false;
         int count = 0;
         try {
-            while ((count = reader.read(buffer,0,buffer.length))!= -1) {
+            while((count = reader.read(buffer,0,buffer.length))!= -1) {
                 if (data == null) data = new char[count];
                 System.arraycopy(buffer, 0, data, 0, count);
                 return true;
@@ -102,6 +109,7 @@ public class MyScanner {
 
 
     public String nextUsingUpdate(){
+
         for (; currentPosition < data.length; currentPosition++){
             if (data[currentPosition] == ' '|| data[currentPosition] == Character.LINE_SEPARATOR){
                 char[] tmpArray = new char[currentPosition-currentStartPosition];
@@ -117,6 +125,8 @@ public class MyScanner {
                 currentStartPosition = 0;
 
                     return nextUsingUpdate();
+               } else {
+                   return new String(data);
                }
 
         }
