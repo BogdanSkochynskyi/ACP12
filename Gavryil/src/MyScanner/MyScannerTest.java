@@ -14,45 +14,65 @@ public class MyScannerTest {
 
         MyScanner scReader = new MyScanner(reader);
 
-       // String first = scString.next();
-       // System.out.println(first);
+         String first = scString.next();
 
-      //  String second = scReader.next();
-      //  System.out.println(second);
 
-       // System.out.println(scString.next());
-       // System.out.println(scString.next());
-       // System.out.println(scString.next());
-       // System.out.println(scString.next());
-       // System.out.println(scString.next());
 
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scReader.nextUsingUpdate());
-        System.out.println(scString.nextUsingUpdate());
-        System.out.println(scString.nextUsingUpdate());
-        System.out.println(scString.nextUsingUpdate());
-        System.out.println(scString.nextUsingUpdate());
-        System.out.println(scString.nextUsingUpdate());
-        System.out.println(scString.nextUsingUpdate());
+        String second = scReader.next();
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println(scReader.next());
+        System.out.println("****************************************");
+        System.out.println(first);
+        System.out.println(scString.next());
+        System.out.println(scString.next());
+        System.out.println(scString.next());
+        System.out.println(scString.next());
+        System.out.println(scString.next());
+        System.out.println(scString.next());
+
+
 
         System.out.println("****************************************");
 
 
         Reader reader1 = new InputStreamReader(new FileInputStream("\\ACP\\ACP12\\Gavryil\\src\\tmp\\try2.txt"));
         MyScanner sc3 = new MyScanner(reader1);
-        System.out.println(sc3.nextUsingUpdate());
+        System.out.println(sc3.next());
+
+
+        System.out.println("****************************************");
+
+        MyScanner sc4 = new MyScanner("1234");
+        System.out.println(sc4.nextInt());
+
+        System.out.println(scReader.nextLine());
+        System.out.println("********************************");
+
+        System.out.println(scString.hasNext());
+        System.out.println(scString.next());
+
+        System.out.println("********************************");
+
+        System.out.println(scReader.hasNext());
+        System.out.println(scReader.next());
+        System.out.println(scReader.nextLine());
+
+
+
+
+
 
 
     }
