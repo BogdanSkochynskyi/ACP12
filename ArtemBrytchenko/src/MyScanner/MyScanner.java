@@ -21,7 +21,7 @@ public class MyScanner implements Closeable{
         reader = new InputStreamReader(new FileInputStream(new File(filePath)));
     }
 
-    public void read(){
+    private void read(){
         dataLine = new StringBuilder();
         try {
             do {
@@ -38,10 +38,6 @@ public class MyScanner implements Closeable{
                 e.printStackTrace();
             }
         }
-    }
-
-    public StringBuilder getDataLine() {
-        return dataLine;
     }
 
     public String next() throws IOException {
