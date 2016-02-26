@@ -26,14 +26,26 @@ public class MyScannerTest {
        // System.out.println(scString.next());
        // System.out.println(scString.next());
 
-        System.out.println(scReader.next());
-        System.out.println(scReader.next());
-        System.out.println(scReader.next());
-        System.out.println(scReader.next());
-        System.out.println(scReader.next());
-        System.out.println(scReader.next());
-        System.out.println(scReader.next());
-        System.out.println(scReader.next());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scReader.nextUsingUpdate());
+        System.out.println(scString.nextUsingUpdate());
+        System.out.println(scString.nextUsingUpdate());
+        System.out.println(scString.nextUsingUpdate());
+        System.out.println(scString.nextUsingUpdate());
+        System.out.println(scString.nextUsingUpdate());
+        System.out.println(scString.nextUsingUpdate());
 
     }
 }

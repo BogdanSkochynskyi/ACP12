@@ -9,12 +9,14 @@ import java.io.Reader;
 public class MyScanner {
 
     char[] data = null;
-    char[] buffer = new char[1000];
+    char[] buffer = new char[10];
     int currentStartPosition;
     int currentPosition;
+    Reader reader;
 
 
-    public MyScanner(Reader reader){
+   /* public MyScanner(Reader reader){
+        this.reader = reader;
         int count = 0;
         try {
             while ((count = reader.read(buffer,0,buffer.length))!= -1){
@@ -41,10 +43,26 @@ public class MyScanner {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     public MyScanner (String text){
+
         data = text.toCharArray();
+
+    }
+
+    public MyScanner(Reader reader){
+        this.reader = reader;
+        int count = 0;
+        try {
+            while ((count = reader.read(buffer,0,buffer.length))!= -1){
+                System.arraycopy(buffer,0,data = new char[count],0,count);
+                return;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public String next(){
@@ -55,8 +73,6 @@ public class MyScanner {
                 currentPosition++;
                 currentStartPosition = currentPosition;
                 return new String(tmpArray);
-            } else {
-
             }
         }
         if (currentPosition == data.length){
@@ -67,11 +83,44 @@ public class MyScanner {
             return new String(tmpArray);
         }
         return null;
-        //String dataString = new String(data);
-        //String[] strArray = dataString.split("\\s+");
-        //String str = strArray[0];
-        //return  str;
+    }
+
+    private void updateBuffer(){
+        int count = 0;
+        try {
+            while ((count = reader.read(buffer,0,buffer.length))!= -1) {
+                if (data == null) data = new char[count];
+                System.arraycopy(buffer, 0, data, 0, count);
+                return;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public String nextUsingUpdate(){
+        for (; currentPosition < data.length; currentPosition++){
+            if (data[currentPosition] == ' '|| data[currentPosition] == Character.LINE_SEPARATOR){
+                char[] tmpArray = new char[currentPosition-currentStartPosition];
+                System.arraycopy(data,currentStartPosition,tmpArray,0,currentPosition-currentStartPosition);
+                currentPosition++;
+                currentStartPosition = currentPosition;
+                return new String(tmpArray);
+            }
+        }
+        if (currentPosition == data.length){
+                updateBuffer();
+                currentPosition = 0;
+                currentStartPosition = 0;
+
+            return nextUsingUpdate();
+        }
+        return null;
     }
 
 }
+
+
 
