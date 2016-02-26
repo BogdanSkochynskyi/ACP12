@@ -1,16 +1,16 @@
 package MyScanner;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.StringTokenizer;
 
 public class MyScanner implements Closeable{
 
     private Reader reader;
     private StringBuilder dataLine;
     private char[] buffer = new char[1024];
-    private char delimiter = ' ';
-    private Integer intData;
-    private Integer[] intBuffer;
+    private Integer intData, intBuffer;
     private int endIndex = 0;
 
     public MyScanner(InputStream is) {
@@ -54,16 +54,26 @@ public class MyScanner implements Closeable{
         return String.valueOf(dataLine);
     }
 
-    /*public int nextInt() throws IOException {
+    public int nextInt() throws IOException {
         if (hasNextInt()){
-            for (int i = 0; i < buffer[endIndex]; i++){
-                if (buffer[i] >= '\u0030' && buffer[i] <= '\u0039'){
-                    intBuffer[i] = (int) buffer[i];
-                }
+            for (int i = 0; i < dataLine.length();) {
+                if (dataLine.substring(i, i+1).equals(" ")) {
+                    return Integer.parseInt(dataLine.substring(0, i));
+                } else i++;
             }
-
         }else throw new InputMismatchException();
-    }*/
+        return Integer.parseInt(dataLine.toString().trim());
+    }
+
+    public String nextLine(){
+        read();
+        for (int i = 0; i < dataLine.length();) {
+            if (dataLine.substring(i, i+1).equals("\n")) {
+                return dataLine.substring(0, i);
+            } else i++;
+        }
+        return String.valueOf(dataLine);
+    }
 
     public boolean hasNext(){
         read();
@@ -71,13 +81,8 @@ public class MyScanner implements Closeable{
     }
 
     public boolean hasNextInt() throws IOException {
-        try {
-            intData = new Integer(next());
-            resetBuffer();
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
+        read();
+        return Character.isDigit(buffer[0]);
     }
 
     private void resetBuffer(){
