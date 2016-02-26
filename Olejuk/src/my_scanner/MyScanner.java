@@ -1,13 +1,13 @@
 package my_scanner;
 
 import java.io.*;
-import java.util.Scanner;
 
 /**
  * Created by dexter on 23.02.16.
  */
 public class MyScanner implements Closeable{
 
+    private final static int DEFAULT_BUFFER_CAPACITY = 1024;
     private Reader reader;
     private StringBuilder strBuilder = new StringBuilder();
 
@@ -24,10 +24,10 @@ public class MyScanner implements Closeable{
         int ready = 0;
         try {
             do {
-                char[] bArray = new char[1024];
+                char[] bArray = new char[DEFAULT_BUFFER_CAPACITY];
                 ready = reader.read(bArray, 0, bArray.length);
                 strBuilder.append(bArray);
-            }while(ready == 1024);
+            }while(ready == DEFAULT_BUFFER_CAPACITY);
         } catch (IOException e) {
             e.printStackTrace();
         }

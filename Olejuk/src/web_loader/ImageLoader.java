@@ -78,6 +78,7 @@ public class ImageLoader {
         while(reader.read(chars, 0, chars.length) == 1024){
             content.append(chars);
             Thread.sleep(100);
+            chars = new char[1024];
         }
 
         con.disconnect();
