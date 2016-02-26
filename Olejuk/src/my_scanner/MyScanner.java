@@ -37,7 +37,6 @@ public class MyScanner implements Closeable{
     }
 
     public String nextLine(){
-
         if(!hasNext()){
             read();
         }
