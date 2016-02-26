@@ -1,4 +1,4 @@
-package ua.artcode.week1.ds.tree;
+package week1.ds.tree;
 
 import java.util.Collection;
 import java.util.Comparator;

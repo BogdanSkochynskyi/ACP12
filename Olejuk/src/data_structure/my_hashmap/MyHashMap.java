@@ -25,13 +25,13 @@ public class MyHashMap<K, V> implements Map<K, V> {
         return putValue(key, value, hash);
     }
 
-    private int getPosition(int hash){
-        return Math.abs(hash) % mass.length;
+    private int getPosition(int hash, int length){
+        return Math.abs(hash) % length;
     }
 
     private V putValue(K key, V value, int hash) {
 
-        int position = getPosition(hash);
+        int position = getPosition(hash, mass.length);
 
         if (mass[position] == null) {
             mass[position] = new MyNode<>(key, value, null, hash);
@@ -47,19 +47,14 @@ public class MyHashMap<K, V> implements Map<K, V> {
     }
 
     private void reHashing(){
-        MyNode<K, V> [] tmp = new MyNode[size];
+        MyNode<K, V> [] tmp = new MyNode[size*2];
 
         MyHashMapIterator iter = new MyHashMapIterator();
-        for(int i = 0; iter.hasNext(); i++, iter.next()){
-            tmp[i] = iter.currNode;
+        for(; iter.hasNext(); iter.next()){
+            tmp[getPosition(iter.currNode.hash, tmp.length)] = iter.currNode;
         }
 
-        mass = new MyNode[mass.length * 2];
-        size = 0;
-
-        for(int i = 0; i < tmp.length; i++){
-            putValue(tmp[i].nodeKey, tmp[i].nodeValue, tmp[i].hash);
-        }
+        mass = tmp;
     }
 
     private V putInTheEnd(K key, V value, MyNode<K, V> mas, int hash) {
@@ -88,7 +83,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
         if(key == null){
             throw new NullPointerException("not initialization key");
         }
-        int position = getPosition(key.hashCode());
+        int position = getPosition(key.hashCode(), mass.length);
         return mass[position] != null ? mass[position].nodeValue : null;
     }
 
@@ -107,7 +102,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
         if(key == null){
             throw new NullPointerException("not initialization key");
         }
-        return removeValue(key, getPosition(key.hashCode()));
+        return removeValue(key, getPosition(key.hashCode(), mass.length));
     }
 
     private V removeValue(Object key, int position){

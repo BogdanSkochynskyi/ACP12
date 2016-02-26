@@ -1,0 +1,54 @@
+1.Material 
+
+       vi - it helps you editing files in linux based system
+       use Git Bash only
+
+       Git material
+               https://www.atlassian.com/git/tutorials/
+               http://git-scm.com/book/en/v2 (first 3 Chapters)
+               https://try.github.io/levels/1/challenges/1
+               http://www.ex.ua/79601047
+
+    java.io.*;
+
+    class File
+    absolute and relative paths (differences)
+
+    byte Stream (InputStream, OutputStream)
+    char streams (Reader, Writer)
+
+    !!! always close OutputStream and Writer
+
+
+    Design Patterns: Decorator, Adapter
+    in java.io.* pattern analogs 
+		 Decorator = *Filter
+		 Adapter - InputStreamReader
+
+   Lections of java.io.*
+   https://www.youtube.com/watch?v=FDuLwPWfWZY&index=11&list=PLvmHg49t5OCQeODC20iDQpBOXFXHJz2em
+   https://www.youtube.com/watch?v=fDMdHt5KlxM&index=12&list=PLvmHg49t5OCQeODC20iDQpBOXFXHJz2em
+
+2. Написать собственную реализацию класса Scanner, работающую с символьными потоками.
+   Создать два конструктора в один передается объект по ссылке Reader, во второй String.
+
+   Реализовать методы:
+
+      String next() - чтение одного слова в строке
+      int nextInt() - чтение целого числа из строки или InputMismatchException
+      String nextLine() - чтение всей строки
+      boolean hasNext() - определение наличия в потоке данных
+      boolean hasNextInt() - определение наличия в потоке целого int числа
+      useDelemiter(String) - использует разделитель
+      close() - закрытие сканнера, теперь нельзя использовать и NoSuchElementException
+	
+	Write tests for Scanner
+
+3. https://www.codecademy.com/learn/learn-the-command-line
+	if you have some questions or need more material
+	https://quickleft.com/blog/command-line-tutorials-summary-what-s-next/
+	http://linuxcommand.org/	
+
+	Play with own system -> for windows use 'git bush', for linux -> just run 'terminal'
+
+4. need more tasks, notify me

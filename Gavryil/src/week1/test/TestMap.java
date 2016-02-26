@@ -1,7 +1,6 @@
-package ua.artcode.week1.test;
+package week1.test;
 
-import ua.artcode.week1.ds.tree.MyBinarySearchTreeMap;
-import ua.artcode.week1.ds.tree.MyHashMap;
+import week1.ds.tree.MyBinarySearchTreeMap;
 
 import java.util.Comparator;
 import java.util.Map;
@@ -18,6 +17,7 @@ public class TestMap {
                 return o1 - o2;
             }
         });
+
 
 
 

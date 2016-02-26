@@ -1,4 +1,4 @@
-package ua.artcode.week1.ds.tree;
+package week1.ds.tree;
 
 import java.util.*;
 
@@ -90,8 +90,17 @@ public class MyHashMap<K,V> implements Map<K,V> {
         do{
             if(iter.currNode.key.equals(key)){
                 V value = iter.currNode.value;
-                iter.currNode = iter.currNode.next;
+                if(table[iter.currIndex].equals(iter.currNode)) {
+                    table[iter.currIndex] = iter.currNode.next;
+                    size--;
+                }
+                iter = null;
+                return value;
+            }  else if (iter.currNode.next!=null && iter.currNode.next.key.equals(key)) {
+                V value = iter.currNode.next.value;
+                iter.currNode.next = iter.currNode.next.next;
                 size--;
+                iter = null;
                 return value;
             }
             iter.next();
@@ -184,6 +193,7 @@ public class MyHashMap<K,V> implements Map<K,V> {
             } else {
                 currIndex++;
                 findFirstNonNull();
+
             }
 
 
