@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class MyScanner implements Closeable{
 
-    private final static int DEFAULT_BUFFER_CAPACITY = 1024;
+    private final static int DEFAULT_BUFFER_CAPACITY = 8192;
     private Reader reader;
     private StringBuilder strBuilder = new StringBuilder();
     private String delimiter = " ";
@@ -19,26 +19,26 @@ public class MyScanner implements Closeable{
 
     public MyScanner(File fileName) throws FileNotFoundException{
         reader = new InputStreamReader(new FileInputStream(fileName));
-        read();
+        readStream();
     }
 
-    private void read(){
+    private void readStream() {
         strBuilder = new StringBuilder();
-        int ready = 0;
+
+        char[] buff = new char[DEFAULT_BUFFER_CAPACITY];
+
         try {
-            do {
-                char[] bArray = new char[DEFAULT_BUFFER_CAPACITY];
-                ready = reader.read(bArray, 0, bArray.length);
-                strBuilder.append(bArray);
-            }while(ready == DEFAULT_BUFFER_CAPACITY);
+            reader.read(buff);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        strBuilder.append(buff);
     }
 
     public String nextLine(){
         if(!hasNext()){
-            read();
+            readStream();
         }
 
         String out = strBuilder.substring(0, strBuilder.indexOf("\n")+1);
@@ -48,7 +48,7 @@ public class MyScanner implements Closeable{
 
     public String next(){
         if(!hasNext()){
-            read();
+            readStream();
         }
         String out = "";
         try{
@@ -76,11 +76,7 @@ public class MyScanner implements Closeable{
     }
 
     public boolean hasNext(){
-
-        if(strBuilder.length() == 0 || strBuilder.charAt(0) == '\u0000'){
-            return false;
-        }
-        return true;
+        return !(strBuilder.length() == 0 || strBuilder.charAt(0) == '\u0000');
     }
 
     public boolean hasInt(){
