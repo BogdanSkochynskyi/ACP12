@@ -4,4 +4,7 @@ out/
 *.iml
 *.class
 
+*.mp3
+*.avi
+
 Olejuk/libs/

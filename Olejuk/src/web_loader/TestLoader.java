@@ -5,9 +5,9 @@ package web_loader;
  */
 public class TestLoader {
     public static void main(String[] args) {
-        ImageLoader loader = new ImageLoader();
+        Loader loader = new Loader();
         try {
-            loader.load("http://www.ex.ua/11841246?r=82539,80936", "/home/dexter/Pictures/", "picture");
+            loader.load("http://www.ex.ua/11841246?r=82539,80936", "/home/dexter/Pictures/", "jpg");
             System.out.println("Done");
         } catch (Exception e) {
             e.printStackTrace();
