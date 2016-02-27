@@ -118,13 +118,10 @@ public class Scanner implements IScanner {
     public int nextInt() {
         String res = "";
         if (hasNextInt()) {
-            for (int i = start; i < end; i++) {
-                if (buffer[i] >= '\u0030' && buffer[i] <= '\u0039') {
-                    res += buffer[i];
-                } else {
-                    throw new NumberFormatException();
-                }
-            }
+            for (int i = start; i < end; i++)
+                res += buffer[i];
+        } else {
+            throw new NumberFormatException();
         }
         start = end;
         findStart();
