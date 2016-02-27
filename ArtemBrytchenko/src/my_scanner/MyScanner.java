@@ -1,7 +1,6 @@
-package MyScanner;
+package my_scanner;
 
 import java.io.*;
-import java.util.InputMismatchException;
 
 public class MyScanner implements Closeable{
 
@@ -9,6 +8,7 @@ public class MyScanner implements Closeable{
     private StringBuilder dataLine;
     private char[] buffer = new char[1024];
     private int startIndex, endIndex = 0;
+    private String space = " ";
 
     public MyScanner(InputStream is) {
         reader = new InputStreamReader(is);
@@ -30,20 +30,19 @@ public class MyScanner implements Closeable{
             } while (buffer.length != 1024);
         }catch (IOException e){
             e.printStackTrace();
-        }finally {
-            try {
-                reader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 
     public String next() throws IOException {
+        int count = 0;
+        int count1 = 0;
         for (int i = 0; i < dataLine.length();) {
-            if (dataLine.substring(i, i+1).equals(" ")) {
-                return dataLine.substring(0, i);
+            if (dataLine.substring(i, i+1).equals(space)) {
+                count = dataLine.indexOf(space);
+                count1 = dataLine.lastIndexOf(space);
+                return dataLine.substring(i, count1);
             } else {
+                count1--;
                 i++;
             }
         }
@@ -57,7 +56,7 @@ public class MyScanner implements Closeable{
                     return Integer.parseInt(dataLine.substring(0, i));
                 } else i++;
             }
-        }else throw new InputMismatchException();
+        }
         return Integer.parseInt(dataLine.toString().trim());
     }
 
@@ -78,9 +77,9 @@ public class MyScanner implements Closeable{
         return Character.isDigit(buffer[0]);
     }
 
-    private void resetBuffer(){
+    /*private void resetBuffer(){
         dataLine = new StringBuilder();
-    }
+    }*/
 
     @Override
     public void close() throws IOException {
