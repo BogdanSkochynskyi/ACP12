@@ -98,4 +98,8 @@ public class MyScanner implements Closeable{
 
     @Override
     public void close() throws IOException { reader.close(); }
+
+    public String getContentsOfAFile(){
+        return contentsOfAFile.toString();
+    }
 }
