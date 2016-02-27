@@ -1,24 +1,23 @@
 package MyScanner;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.InputMismatchException;
-import java.util.StringTokenizer;
 
 public class MyScanner implements Closeable{
 
     private Reader reader;
     private StringBuilder dataLine;
     private char[] buffer = new char[1024];
-    private Integer intData, intBuffer;
-    private int endIndex = 0;
+    private int startIndex, endIndex = 0;
 
     public MyScanner(InputStream is) {
         reader = new InputStreamReader(is);
+        read();
     }
 
     public MyScanner(String filePath) throws FileNotFoundException {
         reader = new InputStreamReader(new FileInputStream(new File(filePath)));
+        read();
     }
 
     private void read(){
@@ -41,11 +40,12 @@ public class MyScanner implements Closeable{
     }
 
     public String next() throws IOException {
-        read();
         for (int i = 0; i < dataLine.length();) {
             if (dataLine.substring(i, i+1).equals(" ")) {
                 return dataLine.substring(0, i);
-            } else i++;
+            } else {
+                i++;
+            }
         }
         return String.valueOf(dataLine);
     }
@@ -62,7 +62,6 @@ public class MyScanner implements Closeable{
     }
 
     public String nextLine(){
-        read();
         for (int i = 0; i < dataLine.length();) {
             if (dataLine.substring(i, i+1).equals(".") || dataLine.substring(i, i+1).equals("\n")) {
                 return dataLine.substring(0, i);
@@ -72,12 +71,10 @@ public class MyScanner implements Closeable{
     }
 
     public boolean hasNext(){
-        read();
         return dataLine.length() != 0;
     }
 
     public boolean hasNextInt() throws IOException {
-        read();
         return Character.isDigit(buffer[0]);
     }
 
