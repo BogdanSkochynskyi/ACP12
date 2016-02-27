@@ -1,6 +1,9 @@
 package myScanner;
 
+import javax.sql.RowSet;
+import javax.sql.rowset.Predicate;
 import java.io.*;
+import java.sql.SQLException;
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,15 +13,14 @@ public class MyScanner {
     private int DEFAULT_SIZE_IN_BYTES = 1024;
 
     //собственно объект чтения
+    private BufferedReader inputBufReader;
     private boolean inputReaderIsEmpty = false;
-    private Reader inputReader;
-
-    //подкачка символов из объекта
-    private char[] bufChar = new char[DEFAULT_SIZE_IN_BYTES];
+    private boolean inputReaderIsConsole = false;
     private int globalByteCounter = 0;
 
-    //буфер строки
+    //подкачка символов из объекта
     private int indexBuf = 0;
+    private char[] bufChar = new char[DEFAULT_SIZE_IN_BYTES];
     private StringBuilder bufStrBuilder = new StringBuilder(DEFAULT_SIZE_IN_BYTES);
 
     //паттерны
@@ -26,13 +28,13 @@ public class MyScanner {
     private Pattern PATTERN_INT = Pattern.compile("\\d+");
     private Pattern PATTERN_DELIMITER_ROWS = Pattern.compile("\\n");
 
-
-//    public MyScanner(InputStream inputStream){
-//        this.inputStream = inputStream;
-//    }
+    public MyScanner(InputStream inputStream){
+        inputReaderIsConsole = true;
+        inputBufReader = new BufferedReader (new InputStreamReader(inputStream));
+    }
 
     public MyScanner(Reader inputReader) throws IOException {
-        this.inputReader = inputReader;
+        inputBufReader = new BufferedReader(inputReader);
         pumpNextPart(false);
     }
 
@@ -46,10 +48,23 @@ public class MyScanner {
             return false;
         }
 
-        int counter = inputReader.read(bufChar);
-        if (counter == -1) {
-            inputReaderIsEmpty = true;
+        int counter = 0;
+        if (inputReaderIsConsole) {
+            String text;
+            text = inputBufReader.readLine();
+            if (text.equals("ESC")) {
+                inputReaderIsEmpty = true;
+                return false;
+            }
+            System.out.println(text);
+            counter = text.length();
             return false;
+        } else {
+            counter = inputBufReader.read(bufChar);
+            if (counter == -1) {
+                inputReaderIsEmpty = true;
+                return false;
+            }
         }
 
         if (trimAllow && indexBuf >= DEFAULT_SIZE_IN_BYTES) {
