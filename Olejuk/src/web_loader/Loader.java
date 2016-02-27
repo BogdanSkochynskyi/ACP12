@@ -7,55 +7,60 @@ import org.jsoup.select.Elements;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.*;
+import java.net.*;
 import java.util.*;
 import java.util.List;
 
 /**
  * Created by dexter on 25.02.16.
  */
-public class ImageLoader {
+public class Loader {
 
     private StringBuilder content = new StringBuilder();
     private List<String> paths = new ArrayList<>();
 
-    public void load(String webPath, String directoryPath, String fileName) throws Exception {
+    public void load(String webPath, String directoryPath, String fileType) throws Exception {
         loadHtml(webPath);
         parseHtml();
-        createFiles(directoryPath, fileName);
+        createFiles(directoryPath, fileType);
     }
 
-    private void createFiles(String directoryPath, String fileName) {
-        BufferedImage img;
-        int numberImage = 1;
-        URL url;
+    private void createFiles(String directoryPath, String fileType)  {
+        int numberFile = 1;
         for(String tmp : paths){
-            try{
-                url = new URL(tmp);
-                img = ImageIO.read(url);
-                if (img != null){
-                    // for jpg
-                    ImageIO.write(img, "jpg",new File(directoryPath + fileName +"_" + numberImage++));
+
+            try {
+                try (InputStream is = new URI(tmp).toURL().openStream();
+                     OutputStream os = new FileOutputStream(directoryPath + "file" + numberFile + "." + fileType)) {
+
+                    byte[] buff = new byte[8000];
+                    int count = 0;
+
+                    while ((count = is.read(buff)) != -1) {
+                        os.write(buff, 0, count);
+                        os.flush();
+                    }
+                    System.out.println();
                 }
-            }catch (Exception e){
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
+            System.out.print("file " + numberFile++ + " created");
         }
+
     }
 
     private void parseHtml() {
         Document html = Jsoup.parse(content.toString());
         List<String> imgPaths = new ArrayList<>();
 
-        Elements elements = html.select("img");
+        Elements elements = html.select("a");
 
         for(Element tmp : elements){
-            imgPaths.add(tmp.attr("src"));
+            imgPaths.add(tmp.attr("href"));
         }
 
         for(String tmp : imgPaths){
@@ -63,6 +68,8 @@ public class ImageLoader {
                 paths.add(tmp);
             }
         }
+
+        System.out.println(paths.size() + " href's founded");
     }
 
     private void loadHtml(String path) throws IOException, InterruptedException {
