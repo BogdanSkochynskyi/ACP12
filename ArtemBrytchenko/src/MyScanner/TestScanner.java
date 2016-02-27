@@ -9,6 +9,8 @@ public class TestScanner {
         /*MyScanner myScanner = new MyScanner("C:/Users/ARTEM/IdeaProjects/ACP12/ArtemBrytchenko/src/MyScanner/string_test");
 
         System.out.println(myScanner.next());
+        System.out.println(myScanner.next());
+        System.out.println(myScanner.next());
         System.out.println(myScanner.nextLine());
         System.out.println(myScanner.nextInt());
         System.out.println(myScanner.hasNext());
@@ -28,8 +30,8 @@ public class TestScanner {
 
         System.out.println(myScanner2.next());
         System.out.println(myScanner2.nextLine());
-        System.out.println(myScanner2.nextInt());
         System.out.println(myScanner2.hasNext());
+        System.out.println(myScanner2.nextInt());
         System.out.println(myScanner2.hasNextInt());*/
     }
 }
