@@ -106,6 +106,7 @@ public class MyScanner {
 
     }
 
+    //
     private Matcher findMatcher(Pattern pattern) throws IOException {
         while (true) {
             String currentString = bufStrBuilder.toString();
@@ -161,7 +162,6 @@ public class MyScanner {
 
     //чтение целого числа из строки или InputMismatchException
     public int nextInt() throws IOException {
-
         Matcher matcher = findMatcher(PATTERN_INT);
         if (matcher == null) {
             return 0;
@@ -174,12 +174,13 @@ public class MyScanner {
 
         indexBuf = indexEnd;
         return Integer.parseInt(bufStrBuilder.substring(matcher.start(), indexEnd));
-
     }
 
     //определение наличия в потоке целого int числа
-    public boolean hasNextInt() {
-        return false;
+    public boolean hasNextInt() throws IOException {
+
+        return findMatcher(PATTERN_INT) != null;
+
     }
 
     //использует разделитель
