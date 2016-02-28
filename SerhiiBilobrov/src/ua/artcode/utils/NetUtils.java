@@ -23,6 +23,7 @@ public class NetUtils {
             while((count = is.read(buff)) != -1){
                 os.write(buff, 0, count);
                 os.flush();
+
             }
         }
 
