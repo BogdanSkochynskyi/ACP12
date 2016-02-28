@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
-<!-- xsd xml schema definition xsd = class  -->
+        <!-- xsd xml schema definition xsd = class  -->
 <team> <!--root element-->
-    <user id="1" shortName="SB">
-        <name>Serhii</name>
-        <birth>1992-19-05</birth>
-        <salary>3000</salary>
-        <address>
-            <city>Kiev</city>
-            <street>Ushinskogo</street>
-            <houseNum>3</houseNum>
-        </address>
-    </user>
+<user id="1" shortName="SB">
+    <name>Serhii</name>
+    <birth>1992-19-05</birth>
+    <salary>3000</salary>
+    <address>
+        <city>Kiev</city>
+        <street>Ushinskogo</street>
+        <houseNum>3</houseNum>
+    </address>
+</user>
 
-    <user id="2">
-        <name>Oleg</name>
-    </user>
+<user id="2">
+    <name>Oleg</name>
+</user>
 
-    <user></user>
+<user></user>
 
-    <user></user>
+<user></user>
 
 </team>
