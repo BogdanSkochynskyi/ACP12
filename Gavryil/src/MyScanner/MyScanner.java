@@ -91,7 +91,7 @@ public class MyScanner {
         }
         if (systemInOpen){
             char[] tmp = new char[currentPosition-currentStartPosition-1];
-            System.arraycopy(data,0,tmp,0,currentPosition - currentStartPosition -1);
+            System.arraycopy(data,0,tmp,0,currentPosition - currentStartPosition -1); //-1 needs, couse when you use System.in "Enter" symbol also come to char array, so you need to remove it befor nextInt()
             return new String(tmp);
         }
         if (delimiterString == null){
