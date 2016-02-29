@@ -1,0 +1,38 @@
+{
+  "team": { // primitive
+
+    "count" : 10, // number, float, boolean, String
+    "users": [ // array []
+      { // object {}
+        "id": "1",
+        "name": "Serhii",
+        "address" : {
+          "city" : "Kiev",
+          "street":"Ushin"
+        }
+      },
+
+      {
+        "id": "1",
+        "name": "Serhii",
+        "additional": "add",
+        "address" : {
+          "city" : "Kiev",
+          "street":"Ushin"
+        }
+      },
+
+      {
+        "id": "1",
+        "name": "Serhii",
+        "address" : {
+          "city" : "Kiev",
+          "street":"Ushin"
+        }
+      }
+
+
+
+    ]
+  }
+}

@@ -18,7 +18,7 @@ import java.util.List;
 public class Loader {
 
     private StringBuilder content = new StringBuilder();
-    private List<String> paths = new ArrayList<>();
+    private Set<String> paths = new HashSet<>();
 
     public void load(String webPath, String directoryPath, String fileType) throws Exception {
         loadHtml(webPath);
@@ -41,14 +41,13 @@ public class Loader {
                         os.write(buff, 0, count);
                         os.flush();
                     }
-                    System.out.println();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
-            System.out.print("file " + numberFile++ + " created");
+            System.out.printf("file%s.%s was created\n", numberFile++, fileType);
         }
 
     }
@@ -69,7 +68,7 @@ public class Loader {
             }
         }
 
-        System.out.println(paths.size() + " href's founded");
+        System.out.println(paths.size() + " files founded");
     }
 
     private void loadHtml(String path) throws IOException, InterruptedException {
@@ -82,9 +81,8 @@ public class Loader {
         char[] chars = new char[1024];
         BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
-        while(reader.read(chars, 0, chars.length) == 1024){
+        while(reader.read(chars, 0, chars.length) != -1){
             content.append(chars);
-            Thread.sleep(100);
             chars = new char[1024];
         }
 
