@@ -1,6 +1,8 @@
 package MyScanner;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 
 /**
@@ -17,7 +19,14 @@ public class MyScanner {
     private char delimiter = ' ';
     private char defautLineSeparator = Character.LINE_SEPARATOR;
     private String delimiterString;
+    private boolean systemInOpen;
+    private InputStream systemIn;
 
+    public MyScanner(InputStream systemIn) {
+        this(new InputStreamReader(systemIn));
+        this.systemIn = systemIn;
+        systemInOpen = true;
+    }
 
     public MyScanner(String text) {
         if (text != null) {
@@ -79,6 +88,11 @@ public class MyScanner {
                     return new String(tmpArray);
                 }
             }
+        }
+        if (systemInOpen){
+            char[] tmp = new char[currentPosition-currentStartPosition-1];
+            System.arraycopy(data,0,tmp,0,currentPosition - currentStartPosition -1);
+            return new String(tmp);
         }
         if (delimiterString == null){
             char[] tmpArray = new char[currentPosition - currentStartPosition];

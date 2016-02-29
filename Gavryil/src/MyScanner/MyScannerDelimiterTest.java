@@ -1,9 +1,6 @@
 package MyScanner;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 
 /**
  * Created by gavri on 29.02.2016.
@@ -30,5 +27,11 @@ public class MyScannerDelimiterTest {
         System.out.println(scReader.next());
         System.out.println(scReader.next());
         System.out.println(scReader.next());
+
+        MyScanner scSys = new MyScanner(System.in);
+        int key = scSys.nextInt();
+        System.out.println(key);
+
+
     }
 }
