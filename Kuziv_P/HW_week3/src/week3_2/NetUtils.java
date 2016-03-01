@@ -1,3 +1,6 @@
+package week3_2; /**
+ * Created by Петро on 01.03.2016.
+ */
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -10,8 +13,8 @@ public class NetUtils {
     public static void load(String url, String dest)
             throws URISyntaxException, IOException {
 
-        try (InputStream is = new URI(url).toURL().openStream();
-             OutputStream os = new FileOutputStream(dest)){
+        try (InputStream is = new URI("http://www.ex.ua"+url).toURL().openStream();
+             OutputStream os = new FileOutputStream("download/"+dest)){
 
             byte[] buff = new byte[8000];
             int count = 0;

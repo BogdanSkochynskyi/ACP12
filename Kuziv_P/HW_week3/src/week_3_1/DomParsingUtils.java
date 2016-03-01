@@ -1,3 +1,5 @@
+package week_3_1;
+
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -41,15 +43,15 @@ public class DomParsingUtils {
 
         stringBuffer.append(">");
 
-       for (int i = 0; i < node.getChildNodes().getLength(); i++) {
-           if(node.getChildNodes().item(i).getNodeName()!="#text" && node.getChildNodes().item(i).getNodeName()!="#comment" ){
-            if (node.hasChildNodes())
-                parse(node.getChildNodes().item(i));
+        for (int i = 0; i < node.getChildNodes().getLength(); i++) {
+            if(node.getChildNodes().item(i).getNodeName()!="#text" && node.getChildNodes().item(i).getNodeName()!="#comment" ){
+                if (node.hasChildNodes())
+                    parse(node.getChildNodes().item(i));
             }
-           else {
-               stringBuffer.append(node.getChildNodes().item(0).getNodeValue());
+            else {
+                stringBuffer.append(node.getChildNodes().item(0).getNodeValue());
             }
-       }
+        }
 
 
 
