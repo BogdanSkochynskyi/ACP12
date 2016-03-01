@@ -8,17 +8,19 @@ import java.io.*;
 public class MyScannerTest {
     public static void main(String[] args) throws FileNotFoundException {
 
-        MyScanner scString = new MyScanner("This is my test MyScanner object");
+        MyScanner scString = new MyScanner("This, is, my, test MyScanner object");
 
         Reader reader = new InputStreamReader(new FileInputStream("\\ACP\\ACP12\\Gavryil\\src\\tmp\\try.txt"));
 
         MyScanner scReader = new MyScanner(reader);
 
-         String first = scString.next();
-
+        scReader.useDelimiter(",");
+        scReader.reset();
+        String first = scString.next();
 
 
         String second = scReader.next();
+        System.out.println(second);
         System.out.println(scReader.next());
         System.out.println(scReader.next());
         System.out.println(scReader.next());
@@ -41,6 +43,9 @@ public class MyScannerTest {
         System.out.println(scString.next());
         System.out.println(scString.next());
         System.out.println(scString.next());
+
+
+
 
 
 

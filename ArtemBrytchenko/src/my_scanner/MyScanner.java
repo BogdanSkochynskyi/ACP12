@@ -7,17 +7,22 @@ public class MyScanner implements Closeable{
     private Reader reader;
     private StringBuilder dataLine;
     private char[] buffer = new char[1024];
-    private int startIndex, endIndex = 0;
-    private String space = " ";
+    private static int startIndex, endIndex = 0;
+    private char delimiter = ' ';
 
     public MyScanner(InputStream is) {
         reader = new InputStreamReader(is);
         read();
     }
 
+    public char[] getBuffer() {
+        return buffer;
+    }
+
     public MyScanner(String filePath) throws FileNotFoundException {
         reader = new InputStreamReader(new FileInputStream(new File(filePath)));
         read();
+        int startIndex, endIndex = 0;
     }
 
     private void read(){
@@ -26,27 +31,28 @@ public class MyScanner implements Closeable{
             do {
                 reader.read(buffer, 0, buffer.length);
                 dataLine.append(buffer);
-                endIndex++;
             } while (buffer.length != 1024);
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
+
     public String next() throws IOException {
-        int count = 0;
-        int count1 = 0;
-        for (int i = 0; i < dataLine.length();) {
-            if (dataLine.substring(i, i+1).equals(space)) {
-                count = dataLine.indexOf(space);
-                count1 = dataLine.lastIndexOf(space);
-                return dataLine.substring(i, count1);
-            } else {
-                count1--;
-                i++;
-            }
+        String s = "";
+        if (dataLine.charAt(startIndex) == 0){
+            throw new StringIndexOutOfBoundsException();
         }
-        return String.valueOf(dataLine);
+        for (int i = startIndex; i < dataLine.length(); i++) {
+            if (dataLine.charAt(i) == delimiter || dataLine.charAt(i) == 0) {
+                s = dataLine.substring(startIndex, i + 1);
+                startIndex = endIndex + 2;
+                endIndex = i;
+                return s;
+            }
+            endIndex = i;
+        }
+        return s;
     }
 
     public int nextInt() throws IOException {
