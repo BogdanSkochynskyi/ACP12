@@ -89,6 +89,14 @@ public class DomParsingUtils {
         Node address = (Node) xPath.compile(getAddresOfUser)
                         .evaluate(document, XPathConstants.NODE);
 
+        System.out.println(user.getTextContent());
+        System.out.println("****************************");
+        for (int i = 0; i < users.getLength(); i++) {
+            System.out.println(users.item(i).getTextContent());
+        }
+        System.out.println("****************************");
+        System.out.printf(address.getTextContent());
+
         // get user with id 1
         // get address of user 1
         // get user with city Kiev
