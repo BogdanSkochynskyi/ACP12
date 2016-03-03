@@ -12,6 +12,9 @@ import java.io.IOException;
 public class Test {
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, XPathExpressionException {
 
-        FaceBookSearcher fb = new FaceBookSearcher("disposition@ukr.net", "11235813lateralusdex");
+        String email = ""; //Enter your email
+        String pass = ""; //Enter your pass
+
+        FaceBookSearcher fb = new FaceBookSearcher(email, pass);
     }
 }
