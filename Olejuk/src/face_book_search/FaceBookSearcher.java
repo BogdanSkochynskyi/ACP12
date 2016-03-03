@@ -1,13 +1,13 @@
 package face_book_search;
 
-import org.w3c.dom.Node;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,19 +20,33 @@ import java.net.URL;
  */
 public class FaceBookSearcher {
 
-    public final String yourPage;
+    public final String FACE_BOOK_PATH = "https://www.facebook.com";
     public String currentPage;
     private String pageSource;
 
-    // path for example :
-    // https://www.facebook.com/vasilishin.oleg
-    public FaceBookSearcher(String path) throws MalformedURLException{
-        yourPage = path;
-        currentPage = yourPage;
-        pageSource = loadPage(currentPage);
+    public FaceBookSearcher(String email, String pass) {
+        enterOnFaceBook(email, pass);
     }
 
-    // download all page... for future search
+    private void enterOnFaceBook(String email, String pass) {
+        WebDriver driver = new FirefoxDriver();
+        driver.get(FACE_BOOK_PATH);
+        System.out.println(driver.getTitle());
+
+        do {
+            WebElement emailElement = driver.findElement(By.id("email"));
+            WebElement passElement = driver.findElement(By.id("pass"));
+            WebElement submitElement = driver.findElement(By.id("u_0_v"));
+
+            emailElement.sendKeys(email);
+            passElement.sendKeys(pass);
+
+            submitElement.click();
+        } while(!"Facebook".equals(driver.getTitle()));
+        System.out.println(driver.getTitle());
+    }
+
+    // download all from page... for future search
     private String loadPage(String path) throws MalformedURLException {
         URL url = new URL(path);
         StringBuilder stringBuilder = new StringBuilder();
@@ -62,17 +76,16 @@ public class FaceBookSearcher {
 
     public int getAllFriends() throws IOException, ParserConfigurationException, SAXException, XPathExpressionException {
 
-        currentPage = yourPage + "/friends_all";
-        currentPage = "https://habrahabr.ru/post/152971/";
-        pageSource = loadPage(currentPage);
+//        currentPage = yourPage + "/friends_all";
+//        pageSource = loadPage(currentPage);
+
 
 //        Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(currentPage);
-
-        XPath xPath = XPathFactory.newInstance().newXPath();
-        //String str = xPath.compile("//*[@id=\"u_jsonp_2_0\"]").evaluate(document);
-        Node node = (Node) xPath.compile("//*[@id=\"post_152971\"]/h1/span").evaluate(pageSource, XPathConstants.NODE);
-
-        System.out.println(node.toString());
+//
+//        XPath xPath = XPathFactory.newInstance().newXPath();
+//        String str = xPath.compile("//*[@id=\"u_jsonp_2_0\"]").evaluate(document);
+//
+//        System.out.println(str);
 
         return 0;
     }

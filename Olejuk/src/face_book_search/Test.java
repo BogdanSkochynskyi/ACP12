@@ -12,7 +12,6 @@ import java.io.IOException;
 public class Test {
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, XPathExpressionException {
 
-        FaceBookSearcher fb = new FaceBookSearcher("https://www.facebook.com/vasilishin.oleg");
-        fb.getAllFriends();
+        FaceBookSearcher fb = new FaceBookSearcher("disposition@ukr.net", "11235813lateralusdex");
     }
 }
