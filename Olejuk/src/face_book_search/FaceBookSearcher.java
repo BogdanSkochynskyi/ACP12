@@ -32,10 +32,12 @@ public class FaceBookSearcher {
         getHomeUrl();
     }
 
+    // method for new instance ..
     public static FaceBookSearcher logIn(String email, String pass) throws LogException{
         return new FaceBookSearcher(enterOnFaceBook(email, pass));
     }
 
+    // throws LogException is login or pass incorrect
     private static WebDriver enterOnFaceBook(String email, String pass) throws LogException{
         WebDriver driver = new FirefoxDriver();
         driver.get(FACE_BOOK_PATH);
@@ -89,6 +91,7 @@ public class FaceBookSearcher {
         return stringBuilder.toString();
     }
 
+    // return sum of all yours friends
     public int getAllFriends() throws IOException, ParserConfigurationException, SAXException, XPathExpressionException {
 
         driver.get(homeUrl + "/friends_all");
@@ -101,6 +104,7 @@ public class FaceBookSearcher {
         return Integer.parseInt(spans.get(1).getText());
     }
 
+    // to find home page
     private void getHomeUrl() {
         WebElement element = driver.findElement(By.xpath("//*[@id=\"u_0_1\"]/div[1]/div[1]/div/a"));
         homeUrl = element.getAttribute("href");
