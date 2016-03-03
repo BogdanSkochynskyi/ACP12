@@ -14,24 +14,31 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 /**
  * Created by dexter on 01.03.16.
  */
 public class FaceBookSearcher {
 
-    public final String FACE_BOOK_PATH = "https://www.facebook.com";
-    public String currentPage;
-    private String pageSource;
+    public final static String FACE_BOOK_PATH = "https://www.facebook.com";
+    public String homeUrl;
 
-    public FaceBookSearcher(String email, String pass) {
-        enterOnFaceBook(email, pass);
+    private String pageSource;
+    private WebDriver driver = new FirefoxDriver();
+
+    private FaceBookSearcher(WebDriver driver) {
+        this.driver = driver;
+        getHomeUrl();
     }
 
-    private void enterOnFaceBook(String email, String pass) {
+    public static FaceBookSearcher logIn(String email, String pass) throws LogException{
+        return new FaceBookSearcher(enterOnFaceBook(email, pass));
+    }
+
+    private static WebDriver enterOnFaceBook(String email, String pass) throws LogException{
         WebDriver driver = new FirefoxDriver();
         driver.get(FACE_BOOK_PATH);
-        System.out.println(driver.getTitle());
 
         do {
             WebElement emailElement = driver.findElement(By.id("email"));
@@ -42,8 +49,16 @@ public class FaceBookSearcher {
             passElement.sendKeys(pass);
 
             submitElement.click();
-        } while(!"Facebook".equals(driver.getTitle()));
+
+            if(driver.getCurrentUrl().equals("https://www.facebook.com/login.php?login_attempt=1&lwv=110")){
+                throw new LogException("incorrect login or pass");
+            }
+
+        } while (!"Facebook".equals(driver.getTitle()));
+
         System.out.println(driver.getTitle());
+
+        return driver;
     }
 
     // download all from page... for future search
@@ -76,17 +91,18 @@ public class FaceBookSearcher {
 
     public int getAllFriends() throws IOException, ParserConfigurationException, SAXException, XPathExpressionException {
 
-//        currentPage = yourPage + "/friends_all";
-//        pageSource = loadPage(currentPage);
+        driver.get(homeUrl + "/friends_all");
 
+        WebElement element = driver.findElement(By.xpath("//*[@class='_3c_ _3s-']"));
+        List<WebElement> spans = element.findElements(By.tagName("span"));
 
-//        Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(currentPage);
-//
-//        XPath xPath = XPathFactory.newInstance().newXPath();
-//        String str = xPath.compile("//*[@id=\"u_jsonp_2_0\"]").evaluate(document);
-//
-//        System.out.println(str);
+        System.out.println(spans.get(0).getText() + " - " + spans.get(1).getText());
 
-        return 0;
+        return Integer.parseInt(spans.get(1).getText());
+    }
+
+    private void getHomeUrl() {
+        WebElement element = driver.findElement(By.xpath("//*[@id=\"u_0_1\"]/div[1]/div[1]/div/a"));
+        homeUrl = element.getAttribute("href");
     }
 }
