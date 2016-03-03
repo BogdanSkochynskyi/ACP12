@@ -56,17 +56,17 @@ public class Loader {
         Document html = Jsoup.parse(content.toString());
         List<String> imgPaths = new ArrayList<>();
 
-        Elements elements = html.select("a");
+        Elements elements = html.select("a[href^=http]");
 
         for(Element tmp : elements){
-            imgPaths.add(tmp.attr("href"));
+            paths.add(tmp.attr("href"));
         }
-
-        for(String tmp : imgPaths){
-            if(tmp.startsWith("http")){
-                paths.add(tmp);
-            }
-        }
+//
+//        for(String tmp : imgPaths){
+//            if(tmp.startsWith("http")){
+//                paths.add(tmp);
+//            }
+//        }
 
         System.out.println(paths.size() + " files founded");
     }
@@ -88,4 +88,5 @@ public class Loader {
 
         con.disconnect();
     }
+
 }
