@@ -19,8 +19,9 @@ public class TestMapping {
         Gson gson = new Gson();
 
 
-        String jsonDep = gson.toJson(new DepartmentPrivatBank("name1", "sdd", 1,
-                "UA","Kiev",1232,"2343","@gmail.com","sdfsdf"));
+        DepartmentPrivatBank dep = new DepartmentPrivatBank("name1", "sdd", 1,
+                "UA", "Kiev", 1232, "2343", "@gmail.com", "sdfsdf");
+        String jsonDep = gson.toJson(dep);
 
         System.out.println(jsonDep);
 
