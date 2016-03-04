@@ -1,4 +1,4 @@
-package MyScanner;
+package myScanner;
 
 /**
  * Created by gavri on 26.02.2016.

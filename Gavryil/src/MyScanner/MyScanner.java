@@ -1,4 +1,4 @@
-package MyScanner;
+package myScanner;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,11 +20,10 @@ public class MyScanner {
     private char defautLineSeparator = Character.LINE_SEPARATOR;
     private String delimiterString;
     private boolean systemInOpen;
-    private InputStream systemIn;
+    private boolean repeatAccess;
 
     public MyScanner(InputStream systemIn) {
         this(new InputStreamReader(systemIn));
-        this.systemIn = systemIn;
         systemInOpen = true;
     }
 
@@ -74,6 +73,10 @@ public class MyScanner {
 
     public String next() {
         String remains = "";
+        if (repeatAccess){
+            initializeReader(reader);
+            currentStartPosition = currentPosition = 0;
+        }
         for (; currentPosition < data.length; currentPosition++) {
             if (data[currentPosition] == delimiter || data[currentPosition] == defautLineSeparator) {
                 if (delimiterString != null)  {
@@ -92,6 +95,7 @@ public class MyScanner {
         if (systemInOpen){
             char[] tmp = new char[currentPosition-currentStartPosition-1];
             System.arraycopy(data,0,tmp,0,currentPosition - currentStartPosition -1); //-1 needs, couse when you use System.in "Enter" symbol also come to char array, so you need to remove it befor nextInt()
+            repeatAccess = true;
             return new String(tmp);
         }
         if (delimiterString == null){
@@ -141,8 +145,7 @@ public class MyScanner {
 
         if (exception) throw new InputMismatchException("String is not a number");
 
-        int result = Integer.parseInt(num);
-        return result;
+        return Integer.parseInt(num);
     }
 
 
@@ -178,8 +181,8 @@ public class MyScanner {
     }
 
     public boolean hasNext() {
-        boolean result = (currentStartPosition < data.length);
-        return result;
+        //if i want to use custom delimiters i should rewrite hasNext method, like , - if (next()!=null) return true.
+        return (currentStartPosition < data.length);
     }
 
     public void useDelimiter(String pattern){
@@ -224,7 +227,7 @@ public class MyScanner {
 //should be void
     private boolean updateBuffer(int saveCharFromPositin, int charsNumber ) {
         if (reader == null) return false;
-        int count = 0;
+        int count;
           try {
               count = reader.read(buffer, charsNumber, buffer.length-charsNumber);
               System.arraycopy(data,saveCharFromPositin,buffer,0,charsNumber);
@@ -242,8 +245,8 @@ public class MyScanner {
 
 
 
-    // Constructor which allows you to download whole file to char[] during creation of MyScanner object
-   /* public MyScanner(Reader reader){
+    // Constructor which allows you to download whole file to char[] during creation of myScanner object
+   /* public myScanner(Reader reader){
         this.reader = reader;
         int count = 0;
         try {
@@ -274,7 +277,7 @@ public class MyScanner {
     }*/
 
 
-    //Method next which works only with constructor which save whole file to char array during MyScanner creation
+    //Method next which works only with constructor which save whole file to char array during myScanner creation
 
    /* public String next(){
         for (; currentPosition < data.length; currentPosition++){

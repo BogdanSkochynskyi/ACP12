@@ -1,4 +1,4 @@
-package MyScanner;
+package myScanner;
 
 import java.io.*;
 
@@ -8,7 +8,7 @@ import java.io.*;
 public class MyScannerTest {
     public static void main(String[] args) throws FileNotFoundException {
 
-        MyScanner scString = new MyScanner("This, is, my, test MyScanner object");
+        MyScanner scString = new MyScanner("This, is, my, test myScanner object");
 
         Reader reader = new InputStreamReader(new FileInputStream("\\ACP\\ACP12\\Gavryil\\src\\tmp\\try.txt"));
 
