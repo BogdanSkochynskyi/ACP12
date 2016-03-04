@@ -1,31 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<bookstore>
-    <book category="cooking">
-        <title lang="en">Everyday Italian</title>
-        <author>Giada De Laurentiis</author>
-        <year>2005</year>
-        <price>30.00</price>
-    </book>
-    <book category="children">
-        <title lang="en">Harry Potter</title>
-        <author>J K. Rowling</author>
-        <year>2005</year>
-        <price>29.99</price>
-    </book>
-    <book category="web">
-        <title lang="en">XQuery Kick Start</title>
-        <author>James McGovern</author>
-        <author>Per Bothner</author>
-        <author>Kurt Cagle</author>
-        <author>James Linn</author>
-        <author>Vaidyanathan Nagarajan</author>
-        <year>2003</year>
-        <price>49.99</price>
-    </book>
-    <book category="web" cover="paperback">
-        <title lang="en">Learning XML</title>
-        <author>Erik T. Ray</author>
-        <year>2003</year>
-        <price>39.95</price>
-    </book>
-</bookstore>
+<?xml version="1.0" encoding="null"?>
+<team id="60"> <!--root element-->
+    <user id="1" shortName="SB">
+        <name>Serhii</name>
+        <birth>1992-19-05</birth>
+        <salary>3000</salary>
+        <address>
+            <city>Kiev</city>
+            <street>Ushinskogo</street>
+            <houseNum>3</houseNum>
+        </address>     <!--adress-->
+    </user>
+
+    <user id="2">
+        <name>Oleg</name>
+        <birth>1993-19-05</birth>
+        <salary>2000</salary>
+        <address>
+            <city>Kiev</city>
+            <street>Ushinskogo</street>
+            <houseNum>20</houseNum>
+        </address>
+    </user>
+
+    <user>
+        <name>Vasja</name>
+        <birth>1991-19-05</birth>
+        <salary>5000</salary>
+        <address>
+            <city>Kiev</city>
+            <street>Ushinskogo</street>
+            <houseNum>30</houseNum>
+        </address>
+    </user>
+
+    <user>
+        <name>Den</name>
+        <birth>1997-19-05</birth>
+        <salary>1000</salary>
+        <address>
+            <city>Kiev</city>
+            <street>Ushinskogo</street>
+            <houseNum>10</houseNum>
+        </address>
+    </user>
+
+</team>
