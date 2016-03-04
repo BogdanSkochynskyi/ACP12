@@ -11,9 +11,6 @@ public class DepartmentPrivatBank {
     private int id;
     private String country;
     private String city;
-
-
-
     private int index;
     private String phone;
     private String email;
