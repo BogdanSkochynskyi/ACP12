@@ -28,6 +28,11 @@ public class MyScanner {
     private Pattern PATTERN_INT = Pattern.compile("\\d+");
     private Pattern PATTERN_DELIMITER_ROWS = Pattern.compile("\\n");
 
+    public MyScanner() throws IOException {
+        inputReaderIsEmpty = true;
+        bufStrBuilder.append("default scanner");
+    }
+
     public MyScanner(InputStream inputStream){
         inputReaderIsConsole = true;
         inputBufReader = new BufferedReader (new InputStreamReader(inputStream));
