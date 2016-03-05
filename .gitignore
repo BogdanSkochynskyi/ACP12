@@ -8,3 +8,4 @@ out/
 *.avi
 
 Olejuk/libs/
+target/
