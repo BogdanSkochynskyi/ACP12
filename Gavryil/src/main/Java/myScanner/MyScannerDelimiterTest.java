@@ -30,9 +30,12 @@ public class MyScannerDelimiterTest {
 
         MyScanner scSys = new MyScanner(System.in);
         int key = scSys.nextInt();
+        System.out.println(scSys.next());
         System.out.println(key);
         int key2 = scSys.nextInt();
         System.out.println(key2);
+
+
 
 
     }
