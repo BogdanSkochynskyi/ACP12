@@ -1,4 +1,4 @@
-package ua.artcode.week4.day1.reflection;
+package ua.artcode.scanner;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import ua.artcode.week3.mapping.DepartmentPrivatBank;
+import ua.artcode.week4.day1.reflection.ReflectionFormatter;
+import ua.artcode.week4.day1.reflection.Robot;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestSerialization {

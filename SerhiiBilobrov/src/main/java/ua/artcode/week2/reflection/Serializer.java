@@ -2,7 +2,6 @@ package ua.artcode.week2.reflection;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Writer;
 
 /**

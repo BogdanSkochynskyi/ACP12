@@ -1,7 +1,8 @@
-package ua.artcode.week3.scanner;
+package ua.artcode.scanner;
 
 
 import org.junit.*;
+import ua.artcode.week3.scanner.MyScannerG;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
