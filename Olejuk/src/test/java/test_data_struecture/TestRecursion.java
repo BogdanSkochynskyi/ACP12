@@ -1,4 +1,4 @@
-package data_structure.test;
+package test_data_struecture;
 
 import data_structure.recursion.RecursionUtils;
 import org.junit.Assert;

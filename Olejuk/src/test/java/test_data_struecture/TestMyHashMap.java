@@ -1,4 +1,4 @@
-package data_structure.test;
+package test_data_struecture;
 
 import data_structure.my_hashmap.MyHashMap;
 import org.junit.Assert;
