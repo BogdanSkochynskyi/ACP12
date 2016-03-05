@@ -10,6 +10,9 @@ public class MyScanner implements Closeable{
     private static int startIndex, endIndex = 0;
     private char delimiter = ' ';
 
+    public MyScanner() {
+    }
+
     public MyScanner(InputStream is) {
         reader = new InputStreamReader(is);
         read();
