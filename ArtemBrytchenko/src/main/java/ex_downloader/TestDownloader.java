@@ -12,8 +12,8 @@ import java.net.URISyntaxException;
 public class TestDownloader {
 
     public static void main(String[] args) throws IOException, URISyntaxException, ParserConfigurationException {
-        String link = "http://www.ex.ua/98869320?r=3,23776";
-        String path = "C:\\Users\\ARTEM\\IdeaProjects\\ACP12\\ArtemBrytchenko\\src\\downloads\\";
+        String link = "http://www.ex.ua/98848271?r=3,23776";
+        String path = "D:\\download\\idea files\\";
 
         Downloader.download(link, path);
 
