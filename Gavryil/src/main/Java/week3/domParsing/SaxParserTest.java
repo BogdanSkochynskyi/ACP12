@@ -1,4 +1,4 @@
-package week3.domParsing;
+package main.Java.week3.domParsing;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
