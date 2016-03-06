@@ -29,17 +29,21 @@ public class Client {
 
         @Override
         public void run(){
-            try (PrintWriter pw = new PrintWriter(socket.getOutputStream())) {
+            try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
 
                 Scanner sc = new Scanner(System.in);
 
                 while(true) {
-                    pw.print(sc.nextLine());
+                    System.out.printf("I to server : ");
+                    String line = sc.nextLine();
+                    bw.write(line + "\n");
+                    bw.flush();
                 }
 
             } catch (IOException e){
                 System.out.println(e.getMessage());
             }
+
         }
     }
 
@@ -52,13 +56,13 @@ public class Client {
                 while(true){
                     String line = br.readLine();
                     if(line == null) break;
-                    System.out.println(line);
+                    System.out.printf("\nserver : %s\n", line);
                 }
 
             } catch (IOException e){
                 e.printStackTrace();
             }
-            System.out.println("client left the chat");
+            System.out.println("\nserver break the connection\n");
         }
     }
 }

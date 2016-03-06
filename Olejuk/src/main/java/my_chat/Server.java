@@ -1,9 +1,6 @@
 package my_chat;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -58,7 +55,6 @@ public class Server {
         @Override
         public void run() {
 
-            System.out.printf("connection to %s server", serverSocket);
             new Read().start();
             new Writer().start();
 
@@ -67,12 +63,15 @@ public class Server {
 
             @Override
             public void run(){
-                try (PrintWriter pw = new PrintWriter(client.getOutputStream())) {
+                try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()))) {
 
                     Scanner sc = new Scanner(System.in);
 
                     while(true) {
-                        pw.print(sc.nextLine());
+                        System.out.printf("serve to %s client : ", count);
+                        String line = sc.nextLine();
+                        bw.write(line + "\n");
+                        bw.flush();
                     }
 
                 } catch (IOException e){
@@ -89,13 +88,13 @@ public class Server {
                     while(true){
                         String line = br.readLine();
                         if(line == null) break;
-                        System.out.println(line);
+                        System.out.printf("\n%s client : %s\n", count, line);
                     }
 
                 } catch (IOException e){
                     e.printStackTrace();
                 }
-                System.out.println("client left the chat");
+                System.out.printf("\n%s client left the chat\n", client);
             }
         }
     }
