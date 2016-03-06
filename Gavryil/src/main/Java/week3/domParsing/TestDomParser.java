@@ -1,4 +1,4 @@
-package main.Java.week3.domParsing;
+package week3.domParsing;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -14,8 +14,8 @@ import java.io.IOException;
  */
 public class TestDomParser {
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
-        File file = new File("Gavryil/src/tmp/company.xml");
-        File file2 = new File("Gavryil/src/tmp/books.xml");
+        File file = new File("Gavryil/src/main/resources/company.xml");
+        File file2 = new File("Gavryil/src/main/resources/books.xml");
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
         Element element = doc.getDocumentElement();
 
@@ -23,6 +23,6 @@ public class TestDomParser {
        // System.out.println(DomParsingUtils.parse(element));
         System.out.println(DomParsingUtils.parseDoc(doc));
 
-        DomParsingUtils.stringToXml(DomParsingUtils.parseDoc(doc),"Gavryil/src/tmp/tryToSave.xml");
+        DomParsingUtils.stringToXml(DomParsingUtils.parseDoc(doc),"Gavryil/src/main/resources/tryToSave.xml");
     }
 }

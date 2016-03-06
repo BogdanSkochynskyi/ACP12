@@ -1,4 +1,4 @@
-package main.Java.week3.domParsing;
+package week3.domParsing;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -16,7 +16,7 @@ import java.io.IOException;
 public class SaxParserTest {
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
         SAXParser saxParser = SAXParserFactory.newInstance().newSAXParser();
-        saxParser.parse(new File("Gavryil/src/tmp/company.xml"),new MyHandler());
+        saxParser.parse(new File("Gavryil/src/main/resources/company.xml"),new MyHandler());
     }
 
      static class MyHandler extends DefaultHandler {

@@ -1,4 +1,4 @@
-package ua.artcode.week1.rec;
+package week1.rec;
 
 /**
  * Created by master on 14.02.16.

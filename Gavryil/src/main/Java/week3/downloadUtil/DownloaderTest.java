@@ -1,4 +1,4 @@
-package main.Java.week3.downloadUtil;
+package week3.downloadUtil;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
@@ -15,7 +15,7 @@ public class DownloaderTest {
     public static void main(String[] args) throws IOException, ParserConfigurationException {
        // MyDownloader.load(URL, DEST);
 
-        MyDownloader.groupDownload(new URL(URL),DEST,"mp3");
+     MyDownloader.groupDownload(new URL(URL),DEST,"mp3");
 
 
 

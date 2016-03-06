@@ -1,4 +1,4 @@
-package myScanner;
+package week2.myScanner;
 
 import java.io.*;
 
@@ -10,7 +10,7 @@ public class MyScannerTest {
 
         MyScanner scString = new MyScanner("This, is, my, test myScanner object");
 
-        Reader reader = new InputStreamReader(new FileInputStream("\\ACP\\ACP12\\Gavryil\\src\\tmp\\try.txt"));
+        Reader reader = new InputStreamReader(new FileInputStream("Gavryil/src/main/resources/try.txt"));
 
         MyScanner scReader = new MyScanner(reader);
 
@@ -52,7 +52,7 @@ public class MyScannerTest {
         System.out.println("****************************************");
 
 
-        Reader reader1 = new InputStreamReader(new FileInputStream("\\ACP\\ACP12\\Gavryil\\src\\tmp\\try2.txt"));
+        Reader reader1 = new InputStreamReader(new FileInputStream("Gavryil/src/main/resources/.txt"));
         MyScanner sc3 = new MyScanner(reader1);
         System.out.println(sc3.next());
 

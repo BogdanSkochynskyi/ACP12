@@ -1,4 +1,4 @@
-package main.Java.week3.domParsing;
+package week3.domParsing;
 
 import org.w3c.dom.*;
 

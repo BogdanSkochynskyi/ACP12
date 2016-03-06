@@ -1,4 +1,4 @@
-package myScanner;
+package week2.myScanner;
 
 import java.io.IOException;
 import java.io.InputStream;

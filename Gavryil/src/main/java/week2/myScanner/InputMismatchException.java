@@ -1,4 +1,4 @@
-package myScanner;
+package week2.myScanner;
 
 /**
  * Created by gavri on 26.02.2016.
