@@ -26,7 +26,6 @@ public class Client {
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
-        System.out.printf("I said to server : " + line);
         bw.write(line + "\n");
         bw.flush();
 

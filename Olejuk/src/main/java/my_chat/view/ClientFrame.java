@@ -80,6 +80,7 @@ public class ClientFrame extends JFrame {
                     int port = Integer.parseInt(portField.getText());
                     client = new Client();
                     client.connect(ipField.getText(), port);
+                    new MessageInput().start();
 
                     connectionPanel.setVisible(false);
                     setConnection.setVisible(true);
@@ -125,5 +126,29 @@ public class ClientFrame extends JFrame {
                         "Connection error", JOptionPane.ERROR_MESSAGE);
             }
         });
+    }
+
+    private class MessageInput extends Thread{
+
+        @Override
+        public void run(){
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()))){
+
+                while(true){
+                    String line = br.readLine();
+                    if(line == null) break;
+                    String newMessage = "Server said : " + line + '\n';
+                    String oldMessages = messageLabel.getText();
+                    messageLabel.setText(oldMessages + newMessage);
+                }
+
+            } catch (IOException e){
+                JOptionPane.showMessageDialog(ClientFrame.this, e.getMessage(),
+                        "Connection error", JOptionPane.ERROR_MESSAGE);
+            }
+            JOptionPane.showMessageDialog(ClientFrame.this, "server break the connection",
+                    "Connection error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 }
