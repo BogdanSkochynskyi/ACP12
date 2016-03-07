@@ -1,6 +1,7 @@
 package week3.downloadUtil;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
@@ -33,7 +34,7 @@ public class MyDownloader {
 
     public static List<URL> searchFiles(URL url) throws ParserConfigurationException, IOException {
          List<URL> arrayList = new ArrayList<>();
-        org.jsoup.nodes.Document document = Jsoup.parse(url, 1000);
+        Document document = Jsoup.parse(url, 1000);
         Element body = document.body();
         Elements elements = body.getElementsByTag("a");
         int innerCount = 0;
