@@ -1,4 +1,4 @@
-package myScanner;
+package week2.myScanner;
 
 import java.io.*;
 
@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class MyScannerDelimiterTest {
     public static void main(String[] args) throws FileNotFoundException {
-        Reader reader = new InputStreamReader(new FileInputStream("\\ACP\\ACP12\\Gavryil\\src\\tmp\\try.txt"));
+        Reader reader = new InputStreamReader(new FileInputStream("Gavryil/src/main/resources/try.txt"));
 
         MyScanner scReader = new MyScanner(reader);
 

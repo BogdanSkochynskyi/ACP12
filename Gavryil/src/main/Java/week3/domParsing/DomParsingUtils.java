@@ -1,4 +1,4 @@
-package week3;
+package week3.domParsing;
 
 import org.w3c.dom.*;
 
