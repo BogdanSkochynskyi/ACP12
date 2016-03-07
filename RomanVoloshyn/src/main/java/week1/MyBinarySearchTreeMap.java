@@ -1,4 +1,4 @@
-package lessonsWeek1;
+package week1;
 
 import java.util.*;
 

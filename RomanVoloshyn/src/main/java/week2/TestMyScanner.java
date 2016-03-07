@@ -1,6 +1,5 @@
-package myScanner;
+package week2;
 
-import java.io.FileReader;
 import java.io.IOException;
 
 public class TestMyScanner {

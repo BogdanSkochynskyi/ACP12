@@ -1,7 +1,6 @@
-package lessonsWeek3;
+package week3;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;

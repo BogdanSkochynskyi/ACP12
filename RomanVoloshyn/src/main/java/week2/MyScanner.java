@@ -1,4 +1,4 @@
-package myScanner;
+package week2;
 
 import javax.sql.RowSet;
 import javax.sql.rowset.Predicate;

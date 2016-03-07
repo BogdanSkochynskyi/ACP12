@@ -1,4 +1,4 @@
-package hometasks;
+package week3;
 
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -9,7 +9,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 
-public class week3 {
+public class XMLToStringParser {
 
     private static StringBuilder xmlContent = new StringBuilder();
     public static final String PATH_XML = "SerhiiBilobrov/resources/company.xml";
