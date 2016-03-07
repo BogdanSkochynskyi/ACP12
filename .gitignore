@@ -8,3 +8,5 @@ out/
 *.avi
 
 Olejuk/libs/
+target/
+Gavryil/target/
