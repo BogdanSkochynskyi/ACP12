@@ -1,4 +1,4 @@
-package my_chat;
+package my_chat.controller;
 
 import java.io.*;
 import java.net.Socket;
@@ -11,18 +11,25 @@ public class Client {
 
     Socket socket;
 
-    public void run(String ip, int port){
+    public void run(String ip, int port) throws IOException {
+        connect(ip, port);
+        new Write().start();
+        new Read().start();
+    }
 
-        try{
+    public void connect(String ip, int port) throws IOException {
+        socket = new Socket(ip, port);
+        System.out.printf("connect to %s\n", socket);
+    }
 
-            socket = new Socket(ip, port);
-            System.out.printf("connect to %s\n", socket);
-            new Write().start();
-            new Read().start();
+    public void sendMessage(String line) throws IOException{
 
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+
+        System.out.printf("I said to server : " + line);
+        bw.write(line + "\n");
+        bw.flush();
+
     }
 
     private class Write extends Thread{
@@ -64,5 +71,17 @@ public class Client {
             }
             System.out.println("\nserver break the connection\n");
         }
+    }
+
+    public String getIp(){
+        return socket.getInetAddress().getHostAddress();
+    }
+
+    public InputStream getInputStream() throws IOException {
+        return socket.getInputStream();
+    }
+
+    public OutputStream getOutputStream() throws IOException {
+        return socket.getOutputStream();
     }
 }

@@ -1,4 +1,4 @@
-package my_chat;
+package my_chat.controller;
 
 /**
  * Created by dexter on 05.03.16.

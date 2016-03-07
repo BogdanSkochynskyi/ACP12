@@ -1,4 +1,4 @@
-package my_chat;
+package my_chat.controller;
 
 import java.io.*;
 import java.net.ServerSocket;
