@@ -1,7 +1,5 @@
 package ex_downloader;
 
-
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -13,16 +11,14 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 
-/**
- * Created by ARTEM on 02.03.2016.
- */
+
 public class Downloader {
 
     public static Map<String, String> parse(String link) throws URISyntaxException, IOException {
 
         Document doc = Jsoup.parse(new URL(link), 10000);
 
-        Elements el1 = doc.select("a[href^=/get]");
+        Elements el1 = doc.select("a[href^=/get][title]");
 
         Map<String, String> map = new HashMap<>();
 
@@ -41,7 +37,6 @@ public class Downloader {
 
         for (Map.Entry<String, String> entries : listOfLinks.entrySet()){
 
-
             try (InputStream is = new URI("http://ex.ua" + entries.getKey()).toURL().openStream();
                  OutputStream os = new FileOutputStream(filepath + entries.getValue())) {
 
@@ -51,7 +46,8 @@ public class Downloader {
                     os.write(count);
                     os.flush();
                 }
-                System.out.println("Progress: " + (counter++) + " of " + totalsize + " song are downloaded");
+                System.out.println("Progress: " + (counter++) + " of " + totalsize + " files are downloaded");
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
