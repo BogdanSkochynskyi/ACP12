@@ -10,7 +10,7 @@ public class ProgressiveBar {
         final int step = 2;
         final int width = 50; // progress bar width in chars
 
-        double percent = roundTo(progressPercentage, 2);
+        double percent = Double.parseDouble(String.format("%.2f", progressPercentage));
         int currentSteps = (int) percent/step;
 
         System.out.append("\r " + percent + " %: [");
@@ -24,8 +24,4 @@ public class ProgressiveBar {
         System.out.append("]");
     }
 
-    private static double roundTo(double progressPercentage, int i) {
-
-        return 0;
-    }
 }
