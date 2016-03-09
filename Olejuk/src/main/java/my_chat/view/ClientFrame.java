@@ -12,6 +12,7 @@ import java.io.*;
 public class ClientFrame extends JFrame {
 
     private Client client;
+    private Thread thread;
 
     private JButton setConnection = new JButton("set connection");
     private JPanel connectionPanel = new JPanel();
@@ -65,10 +66,10 @@ public class ClientFrame extends JFrame {
         setConnection.addActionListener((e) ->{
             if(!connectionPanel.isVisible()){
                 client = null;
+                if(scrollPane != null)scrollPane.setVisible(false);
                 connectionPanel.setVisible(true);
                 setConnection.setVisible(false);
                 messagePanel.setVisible(false);
-                messageLabel = new JTextPane();
                 ClientFrame.this.add(connectionPanel, BorderLayout.CENTER);
             }
         });
@@ -77,18 +78,22 @@ public class ClientFrame extends JFrame {
             if(connectionPanel.isVisible()){
                 try{
 
+                    if(thread != null) thread.interrupt();
+
                     int port = Integer.parseInt(portField.getText());
                     client = new Client();
                     client.connect(ipField.getText(), port);
-                    new MessageInput().start();
+                    thread = new MessageInput();
+                    thread.start();
 
                     connectionPanel.setVisible(false);
                     setConnection.setVisible(true);
                     messagePanel.setVisible(true);
                     messageLabel = new JTextPane();
+                    messageLabel.setText("connection...\n");
                     scrollPane = new JScrollPane(messageLabel);
                     ClientFrame.this.add(scrollPane, BorderLayout.CENTER);
-
+                    scrollPane.setVisible(true);
 
                     JOptionPane.showMessageDialog(this,
                             client.getIp(),
