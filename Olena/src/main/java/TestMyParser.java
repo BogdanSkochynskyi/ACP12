@@ -1,10 +1,8 @@
-package week3;
 
 
-import com.sun.xml.internal.ws.api.client.SelectOptimalEncodingFeature;
+
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
-import week2.MyScanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

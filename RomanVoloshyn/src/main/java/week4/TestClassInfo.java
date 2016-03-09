@@ -1,9 +1,8 @@
-package lessonsWeek4;
+package week4;
 
-import myScanner.MyScanner;
+import week2.MyScanner;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
 /**
  * Created by serhii on 04.03.16.

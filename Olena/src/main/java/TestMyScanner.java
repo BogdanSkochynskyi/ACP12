@@ -1,9 +1,7 @@
-package week2;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+
+
 import java.io.IOException;
-import java.util.Objects;
 
 /**
  * Created by ����� on 25.02.2016.

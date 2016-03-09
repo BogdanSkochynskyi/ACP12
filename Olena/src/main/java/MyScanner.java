@@ -1,6 +1,3 @@
-package week2;
-
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 
 import java.io.*;
 import java.util.*;

@@ -1,6 +1,4 @@
-package lessonsWeek1;
-
-import java.util.ArrayList;
+package week1;
 
 public class Test {
 

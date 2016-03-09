@@ -12,7 +12,7 @@ import java.net.URISyntaxException;
 public class TestDownloader {
 
     public static void main(String[] args) throws IOException, URISyntaxException, ParserConfigurationException {
-        String link = "http://www.ex.ua/98848271?r=3,23776";
+        String link = "http://www.ex.ua/99011847?r=3,23776";
         String path = "D:\\download\\idea files\\";
 
         Downloader.download(link, path);

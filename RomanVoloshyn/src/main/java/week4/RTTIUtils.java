@@ -1,4 +1,4 @@
-package lessonsWeek4;
+package week4;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
