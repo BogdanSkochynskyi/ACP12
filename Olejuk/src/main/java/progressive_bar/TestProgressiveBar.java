@@ -8,10 +8,10 @@ import java.util.Arrays;
 public class TestProgressiveBar {
     public static void main(String[] args) throws InterruptedException {
 
-        int[] firstSortedArray = {1, 1, 7, 9};
-        int[] secondSortedArray = {2, 4, 4, 8};
 
-        System.out.println(Arrays.toString(merge(firstSortedArray, secondSortedArray)));
+        double doub = roundTo(2.666, 2);
+        System.out.println(doub);
+
     }
 
     private static int[] merge(int[] array1, int[] array2) throws InterruptedException {
@@ -23,9 +23,19 @@ public class TestProgressiveBar {
         for (int i = 0; i < newArray.length-1; i++) {
 
             if(array1[indexFirstArray] < array2[indexSecondArray]){
-                newArray[i] = array1[indexFirstArray++];
+                if(i+1 == newArray.length-1){
+                    newArray[i] = array1[indexFirstArray];
+                    newArray[i+1] = array2[indexSecondArray];
+                } else{
+                    newArray[i] = array1[indexFirstArray++];
+                }
             } else {
-                newArray[i] = array2[indexSecondArray++];
+                if(i+1 == newArray.length-1){
+                    newArray[i] = array2[indexSecondArray];
+                    newArray[i+1] = array1[indexFirstArray];
+                } else{
+                    newArray[i] = array2[indexSecondArray++];
+                }
             }
             ProgressiveBar.updateProgress(((double)i / newArray.length) * 100);
             Thread.sleep(500);
@@ -36,4 +46,15 @@ public class TestProgressiveBar {
         return newArray;
     }
 
+    public static double roundTo(double number, int degree){
+
+        int pow = (int) Math.pow(10, degree);
+
+        double tmp = number * pow;
+
+        return (double)
+                (int)(
+                        (tmp - (int) tmp) >= 0.5f ? tmp + 1 : tmp
+                ) / pow;
+    }
 }
