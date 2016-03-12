@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by serhii on 05.03.16.
- */
 public class Server {
 
     private int id;
