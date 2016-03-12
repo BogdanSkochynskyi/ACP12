@@ -1,7 +1,5 @@
 package week4;
 
-import myScanner.MyScanner;
-
 /**
  * Created by gavri on 04.03.2016.
  */
