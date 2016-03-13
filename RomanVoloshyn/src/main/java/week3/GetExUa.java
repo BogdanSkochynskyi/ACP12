@@ -21,7 +21,7 @@ public class GetExUa {
     final private static String CSS_QUERY_LOADS = "a[href~=/load/\\d+$]";//"a[href^=/load]";
     final private static String CSS_QUERY_LINKS = "a[href~=/\\w+.r=[\\d,]+$]";
 
-    final private static Pattern PATTERN_PARENT_INDEX = Pattern.compile("[?]r=\\d+($|&)");
+    final private static Pattern PATTERN_PARENT_INDEX = Pattern.compile("[\\?]r=\\d+($|&)");
     final private static Pattern PATTERN_PAGE_NUMBER = Pattern.compile("&p=(\\d+)$");
 
     public static void main(String[] args) {
@@ -54,7 +54,7 @@ public class GetExUa {
         boolean parentContainsPrefix = PATTERN_PARENT_INDEX.matcher(target).find();
         for (Element e : elements) {
             String link = e.attr("href");
-            if ((parentContainsPrefix ? !PATTERN_PARENT_INDEX.matcher(link).find() : true) && !linksList.contains(link)) {
+            if ((!parentContainsPrefix || !PATTERN_PARENT_INDEX.matcher(link).find()) && !linksList.contains(link)) {
                 linksList.add(PREFIX_LINK + link);
                 collectAllLinks(PREFIX_LINK + link, linksList, false);
             }
