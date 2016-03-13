@@ -1,4 +1,4 @@
-package ua.artcode.week5.common_resource;
+package ua.artcode.week5._03java_synchroniz;
 
 /**
  * Created by serhii on 12.03.16.
@@ -13,7 +13,7 @@ public class MyLock {
     public void lockA() {
         taken1 = true;
         victim = 1;
-        while (taken2 && victim == 1) ;
+        while (taken2 && victim == 1);// spin lock
     }
 
     public void lockB() {
