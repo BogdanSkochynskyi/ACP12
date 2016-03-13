@@ -7,7 +7,7 @@ public class _01Intro {
 
     public static void main(String[] args) {
 
-        Container container = new ContainerSpinLock();
+        IContainer container = new ContainerSpinLock();
 
         long start = System.currentTimeMillis();
 
@@ -40,11 +40,11 @@ public class _01Intro {
 
 class IncThread implements Runnable {
 
-    private Container container;
+    private IContainer container;
     private int operationCount;
 
 
-    public IncThread(Container container, int operationCount) {
+    public IncThread(IContainer container, int operationCount) {
         this.container = container;
         this.operationCount = operationCount;
     }
@@ -59,11 +59,11 @@ class IncThread implements Runnable {
 
 class DecThread implements Runnable {
 
-    private Container container;
+    private IContainer container;
     private int operationCount;
 
 
-    public DecThread(Container container, int operationCount) {
+    public DecThread(IContainer container, int operationCount) {
         this.container = container;
         this.operationCount = operationCount;
     }
@@ -76,7 +76,15 @@ class DecThread implements Runnable {
     }
 }
 
-class Container {
+
+interface IContainer {
+    void inc();
+    void decr();
+
+    int getCount();
+}
+
+class Container implements IContainer {
 
     private volatile int count;
 
@@ -101,21 +109,27 @@ class Container {
 
 }
 
-class ContainerSpinLock extends Container {
+class ContainerSpinLock implements IContainer{
 
-    private volatile int count;
+    private volatile int count = 0;
     private MyLock myLock = new MyLock();
 
     public void inc() {// monitor this
-        myLock.lock();
-        count++;
-        myLock.unlock();
+        try{
+            myLock.lockA();
+            count++;
+        }finally {
+            myLock.unlockA();
+        }
     }
 
     public void decr() {
-        myLock.lock();
-        count--;
-        myLock.unlock();
+        try{
+            myLock.lockB();
+            count--;
+        }finally {
+            myLock.unlockB();
+        }
     }
 
     public int getCount() {
