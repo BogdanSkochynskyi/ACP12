@@ -1,4 +1,4 @@
-package week2;
+package blasoUtils;
 
 import javax.sql.RowSet;
 import javax.sql.rowset.Predicate;
@@ -8,7 +8,7 @@ import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MyScanner {
+public class Scanner_BS {
 
     private int DEFAULT_SIZE_IN_BYTES = 1024;
 
@@ -28,22 +28,22 @@ public class MyScanner {
     private Pattern PATTERN_INT = Pattern.compile("\\d+");
     private Pattern PATTERN_DELIMITER_ROWS = Pattern.compile("\\n");
 
-    public MyScanner() throws IOException {
+    public Scanner_BS() throws IOException {
         inputReaderIsEmpty = true;
         bufStrBuilder.append("default scanner");
     }
 
-    public MyScanner(InputStream inputStream){
+    public Scanner_BS(InputStream inputStream) {
         inputReaderIsConsole = true;
-        inputBufReader = new BufferedReader (new InputStreamReader(inputStream));
+        inputBufReader = new BufferedReader(new InputStreamReader(inputStream));
     }
 
-    public MyScanner(Reader inputReader) throws IOException {
+    public Scanner_BS(Reader inputReader) throws IOException {
         inputBufReader = new BufferedReader(inputReader);
         pumpNextPart(false);
     }
 
-    public MyScanner(String inputString) throws IOException {
+    public Scanner_BS(String inputString) throws IOException {
         inputReaderIsEmpty = true;
         bufStrBuilder.append(inputString);
     }

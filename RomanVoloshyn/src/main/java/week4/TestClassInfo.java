@@ -1,6 +1,6 @@
 package week4;
 
-import week2.MyScanner;
+import blasoUtils.Scanner_BS;
 
 import java.io.IOException;
 
@@ -12,9 +12,9 @@ public class TestClassInfo {
 
     public static void main(String[] args){
 
-        MyScanner myScanner;
+        Scanner_BS myScanner;
         try {
-            myScanner = new MyScanner("hjksahdjksdfhi");
+            myScanner = new Scanner_BS("hjksahdjksdfhi");
         } catch (IOException e) {
             e.printStackTrace();
             return;

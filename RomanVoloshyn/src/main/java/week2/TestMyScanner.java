@@ -1,17 +1,19 @@
 package week2;
 
+import blasoUtils.Scanner_BS;
+
 import java.io.IOException;
 
 public class TestMyScanner {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        MyScanner msc = new MyScanner(System.in);
+        Scanner_BS msc = new Scanner_BS(System.in);
         msc.nextLine();
 
 //        // http://www.ex.ua/144968917177
 //        FileReader fr = new FileReader("C:\\1c_exchange.log");
-//        MyScanner msc = new MyScanner(fr);
+//        Scanner_BS msc = new Scanner_BS(fr);
 //
 //
 //        int counter = 0;
