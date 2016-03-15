@@ -6,6 +6,7 @@ import java.util.Arrays;
  * Created by dexter on 09.03.16.
  */
 public class TestProgressiveBar {
+
     public static void main(String[] args) throws InterruptedException {
 
 

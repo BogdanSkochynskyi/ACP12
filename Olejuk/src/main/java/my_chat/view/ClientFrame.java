@@ -5,6 +5,9 @@ import my_chat.controller.Client;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+import java.nio.channels.ClosedByInterruptException;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 /**
  * Created by dexter on 06.03.16.
@@ -78,6 +81,7 @@ public class ClientFrame extends JFrame {
             if(connectionPanel.isVisible()){
                 try{
 
+//                    if(client != null)client.disconnect();
                     if(thread != null) thread.interrupt();
 
                     int port = Integer.parseInt(portField.getText());
@@ -139,20 +143,23 @@ public class ClientFrame extends JFrame {
         public void run(){
             try (BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()))){
 
-                while(true){
-                    String line = br.readLine();
-                    if(line == null) break;
-                    String newMessage = "Server said : " + line + '\n';
-                    String oldMessages = messageLabel.getText();
-                    messageLabel.setText(oldMessages + newMessage);
+                while(!isInterrupted()){
+
+                    if(br.ready()){
+                        String line = br.readLine();
+                        if(line == null) break;
+                        String newMessage = "Server said : " + line + '\n';
+                        String oldMessages = messageLabel.getText();
+                        messageLabel.setText(oldMessages + newMessage);
+                    }
+
                 }
 
             } catch (IOException e){
                 JOptionPane.showMessageDialog(ClientFrame.this, e.getMessage(),
                         "Connection error", JOptionPane.ERROR_MESSAGE);
             }
-            JOptionPane.showMessageDialog(ClientFrame.this, "server break the connection",
-                    "Connection error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Thread is dead");
         }
 
     }

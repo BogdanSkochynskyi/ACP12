@@ -20,7 +20,7 @@ public class Server {
 
         try {
             serverSocket = new ServerSocket(8080);
-            System.out.println("Server was ran");
+            System.out.println("Server was run");
             while(true){
                 Socket client = serverSocket.accept();
                 new Guest(client, id).start();
