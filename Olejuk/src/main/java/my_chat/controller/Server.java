@@ -66,8 +66,6 @@ public class Server {
                 try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
 
-                    Scanner sc = new Scanner(System.in);
-
                     while(!client.isClosed()) {
 
                         if(br.ready()){
