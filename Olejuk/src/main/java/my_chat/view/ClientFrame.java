@@ -81,7 +81,6 @@ public class ClientFrame extends JFrame {
             if(connectionPanel.isVisible()){
                 try{
 
-//                    if(client != null)client.disconnect();
                     if(thread != null) thread.interrupt();
 
                     int port = Integer.parseInt(portField.getText());

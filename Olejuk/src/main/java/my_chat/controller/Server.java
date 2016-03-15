@@ -63,15 +63,20 @@ public class Server {
 
             @Override
             public void run(){
-                try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()))) {
+                try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
 
                     Scanner sc = new Scanner(System.in);
 
-                    while(true) {
-                        System.out.printf("serve to %s client : ", count);
-                        String line = sc.nextLine();
-                        bw.write(line + "\n");
-                        bw.flush();
+                    while(!client.isClosed()) {
+
+                        if(br.ready()){
+                            System.out.printf("serve to %s client : ", count);
+                            String line = br.readLine();
+                            bw.write(line + "\n");
+                            bw.flush();
+                        }
+
                     }
 
                 } catch (IOException e){

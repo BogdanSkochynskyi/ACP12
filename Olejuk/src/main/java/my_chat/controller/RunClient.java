@@ -8,7 +8,7 @@ import java.io.IOException;
 public class RunClient {
     public static void main(String[] args) {
         try {
-            new Client().run("192.168.0.102", 8080);
+            new Client().run("192.168.0.101", 8080);
         } catch (IOException e) {
             e.printStackTrace();
         }
