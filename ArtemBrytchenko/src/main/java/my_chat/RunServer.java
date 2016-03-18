@@ -1,6 +1,5 @@
 package my_chat;
 
-
 import java.io.IOException;
 
 public class RunServer {
