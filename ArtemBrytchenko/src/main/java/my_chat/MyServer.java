@@ -17,6 +17,8 @@ public class MyServer {
     public MyServer(int port) throws IOException {
         try {
             ServerSocket server = new ServerSocket(port);
+            System.out.println("*=*=*=*=*=*=*=*=*\n" +
+                    "Server is ready to work\n" + "*=*=*=*=*=*=*=*=*");
             while (true) {
                 Socket client = server.accept();
                 System.out.printf("new client was connected: IP %s, port %s\n",
@@ -30,49 +32,35 @@ public class MyServer {
     }
 
     private class ForwardMessage extends Thread {
-        private BufferedReader br;
-        private PrintWriter pw;
+        private BufferedReader input;
+        private PrintWriter output;
         private Socket client;
-        private boolean setBlock = true;
+        private boolean isConnected = true;
 
         public ForwardMessage(Socket client) {
             this.client = client;
         }
 
-        public void close() {
-            try {
-                br.close();
-                pw.close();
-                Iterator<Socket> iter = clientList.iterator();
-                while (iter.hasNext()){
-                    iter.next().close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+        public void sendToAll(String name, String text) throws IOException {
+            Iterator<Socket> iter = clientList.iterator();
+            while (iter.hasNext()) {
+                output = new PrintWriter(iter.next().getOutputStream(), true);
+                output.println(name + " : " + text);
             }
         }
 
         @Override
         public void run() {
-            while (setBlock) {
+            while (isConnected) {
                 try {
-                    br = new BufferedReader(new InputStreamReader(client.getInputStream()));
-                    String name = br.readLine();
+                    input = new BufferedReader(new InputStreamReader(client.getInputStream()));
+                    String name = input.readLine();
                     String text;
-                    text = br.readLine();
-                    if (text.equals("exit")) {
-                        break;
-                    }
-                    Iterator<Socket> iter = clientList.iterator();
-                    while (iter.hasNext()) {
-                        pw = new PrintWriter(iter.next().getOutputStream(), true);
-                        pw.println(name + " : " + text);
-                    }
+                    text = input.readLine();
+                    sendToAll(name, text);
                 } catch (IOException e) {
-                    e.getMessage();
-                    setBlock = false;
-                } finally {
-                    close();
+                    isConnected = false;
+                    System.out.println("client " + client.getInetAddress() + " was disconnected");
                 }
             }
         }

@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class MyClient {
     private String name;
 
-    public MyClient() {
+    public MyClient() throws IOException {
         try {
             Socket client = new Socket("localhost", 7777);
             Scanner readName = new Scanner(System.in);
@@ -25,76 +25,49 @@ public class MyClient {
     }
 
     private class SendMessage extends Thread {
-        private PrintWriter pw;
-        private Scanner sc;
+        private PrintWriter output;
+        private Scanner console;
         private Socket client;
 
         public SendMessage(Socket client) throws IOException {
             this.client = client;
-        }
-
-        public void close(){
-            try {
-                pw.close();
-                sc.close();
-                client.close();
-            } catch (IOException e){
-                e.printStackTrace();
-            }
+            console = new Scanner(System.in);
+            output = new PrintWriter(client.getOutputStream(), true);
         }
 
         @Override
         public void run() {
-            sc = new Scanner(System.in);
             while (true) {
-                try {
-                    pw = new PrintWriter(client.getOutputStream(), true);
-                    pw.println(name);
-
-                    String text;
-
-                    text = sc.nextLine();
-                    if (text.equals("exit")) {
-                        break;
-                    }
-                    pw.println(text);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    close();
-                }
+                output.println(name);
+                String text;
+                text = console.nextLine();
+                output.println(text);
             }
         }
     }
 
     private class GetMessage extends Thread {
-        private BufferedReader br;
+        private BufferedReader input;
         private Socket client;
 
-        public GetMessage(Socket client) {
+        public GetMessage(Socket client) throws IOException {
             this.client = client;
-        }
-
-        public void close(){
-            try {
-                br.close();
-                client.close();
-            } catch (IOException e){
-                e.printStackTrace();
-            }
+            input = new BufferedReader(new InputStreamReader(client.getInputStream()));
         }
 
         @Override
         public void run() {
-            boolean isConnected = true;
-            while (isConnected) {
+            while (true) {
                 try {
-                    br = new BufferedReader(new InputStreamReader(client.getInputStream()));
-                    System.out.println(br.readLine());
+                    String text = input.readLine();
+                    if (text == null) {
+                        System.out.println("null input");
+                        break;
+                    }
+                    System.out.println(text);
                 } catch (IOException e) {
-                    close();
-                    isConnected = false;
                     System.err.println("Server was shut down");
+                    System.exit(0);
                 }
             }
         }
