@@ -2,15 +2,15 @@ CREATE DATABASE ACP12;
 
 
 CREATE TABLE addresses (
-  id INT PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   city VARCHAR (20),
   street VARCHAR (20),
   house_num int
 );
 
-INSERT INTO addresses(id,city) VAlUES (1,'Kiev');
-INSERT INTO addresses(id,city) VAlUES (2,'Odessa');
-INSERT INTO addresses(id,city) VAlUES (3,'Kharkiv');
+INSERT INTO addresses(city) VAlUES ('Kiev');
+INSERT INTO addresses(city) VAlUES ('Odessa');
+INSERT INTO addresses(city) VAlUES ('Kharkiv');
 
 CREATE TABLE students(
   name VARCHAR(20),
@@ -22,12 +22,10 @@ CREATE TABLE students(
   FOREIGN KEY(address_id) REFERENCES addresses(id)
 );
 
-CREATE TABLE
 
-INSERT INTO students(name,birth,salary,address) VALUES ('Serhii',NOW(),3000.00,'Kiev');
-INSERT INTO students(name,birth,salary,address) VALUES ('Oleg',NOW(),6000.00,'Odessa');
-INSERT INTO students(name,birth,salary,address) VALUES ('Ivan',NOW(),2000.00,'Kharkiv');
-INSERT INTO students(name,birth,salary,address) VALUES ('Gavriil',NOW(),13000.00,'Kiev');
+INSERT INTO students(name,birth,mail,salary,address_id) VALUES ('Serhii',NOW(),'abc@mail.ru',3000.00,2);
+INSERT INTO students(name,birth,mail,salary,address_id) VALUES ('Oleg',NOW(),'abc2@mail.ru',4000.00,1);
+INSERT INTO students(name,birth,mail,salary,address_id) VALUES ('Ivan',NOW(),'abc3@mail.ru',5000.00,1);
 
 SELECT * FROM students;
 SELECT name, birth FROM students;
