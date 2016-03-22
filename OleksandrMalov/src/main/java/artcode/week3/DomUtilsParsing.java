@@ -1,4 +1,4 @@
-package ua.artcode.week3;
+package main.java.artcode.week3;
 
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -11,7 +11,6 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 

@@ -1,4 +1,4 @@
-package ua.artcode.week3;
+package main.java.artcode.week3;
 
 /**
  * Created by Олександр on 27.02.2016.

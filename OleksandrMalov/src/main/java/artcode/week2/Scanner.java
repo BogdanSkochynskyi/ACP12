@@ -1,4 +1,4 @@
-package ua.artcode.week2;
+package main.java.artcode.week2;
 
 import java.io.*;
 import java.util.NoSuchElementException;

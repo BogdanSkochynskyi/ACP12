@@ -1,4 +1,4 @@
-package ua.artcode.week3;
+package main.java.artcode.week3;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
