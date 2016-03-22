@@ -8,19 +8,19 @@ public class ProgressBar_BS {
     private final int step = 2;
     private int prevStep = -1;
 
-    public ProgressBar_BS(){
+    public ProgressBar_BS() {
     }
 
     public void updateProgress(double progressPercentage) {
 
         double percent = Math_BS.roundTo(progressPercentage, 2);
-        int currentSteps = (int) percent/step;
+        int currentSteps = (int) percent / step;
 
         System.out.print("\r");
         System.out.print(String.format("%3.2f", percent));
         System.out.print(" %");
 
-        if (currentSteps > prevStep){
+        if (currentSteps > prevStep) {
 
             prevStep = currentSteps;
             updateProgressPattern();
@@ -30,7 +30,7 @@ public class ProgressBar_BS {
         System.out.print(pattern);
     }
 
-    private void updateProgressPattern(){
+    private void updateProgressPattern() {
 
         StringBuilder sb = new StringBuilder(52);
 

@@ -26,8 +26,10 @@ public class Test {
 
         try {
             FaceBookSearcher fb = FaceBookSearcher.logIn(email, pass);
+            System.out.println(fb.getAllFriends());
         } catch (LogException e) {
             System.out.println(e.getMessage());
         }
+
     }
 }

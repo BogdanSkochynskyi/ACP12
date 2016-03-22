@@ -20,7 +20,7 @@ public class Server {
 
         try {
             serverSocket = new ServerSocket(8080);
-            System.out.println("Server was ran");
+            System.out.println("Server was run");
             while(true){
                 Socket client = serverSocket.accept();
                 new Guest(client, id).start();
@@ -63,15 +63,18 @@ public class Server {
 
             @Override
             public void run(){
-                try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()))) {
+                try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
 
-                    Scanner sc = new Scanner(System.in);
+                    while(!client.isClosed()) {
 
-                    while(true) {
-                        System.out.printf("serve to %s client : ", count);
-                        String line = sc.nextLine();
-                        bw.write(line + "\n");
-                        bw.flush();
+                        if(br.ready()){
+                            System.out.printf("serve to %s client : ", count);
+                            String line = br.readLine();
+                            bw.write(line + "\n");
+                            bw.flush();
+                        }
+
                     }
 
                 } catch (IOException e){

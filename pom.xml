@@ -14,6 +14,10 @@
         <module>SerhiiBilobrov</module>
         <module>Gavryil</module>
         <module>Kuziv_P</module>
+        <module>RomanVoloshyn</module>
+        <module>Olejuk</module>
+        <module>Olena</module>
+        <module>ArtemBrytchenko</module>
     </modules>
 
 
@@ -45,7 +49,11 @@
             <version>${jsoup.version}</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>2.52.0</version>
+        </dependency>
     </dependencies>
 
     <build>

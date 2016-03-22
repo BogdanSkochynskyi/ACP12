@@ -19,10 +19,10 @@ public class Loader {
 
     private StringBuilder content = new StringBuilder();
     private Set<String> paths = new HashSet<>();
+    private Set<String> images = new HashSet<>();
 
     public void load(String webPath, String directoryPath, String fileType) throws Exception {
-        loadHtml(webPath);
-        parseHtml();
+        parseHtml(webPath);
         createFiles(directoryPath, fileType);
     }
 
@@ -52,25 +52,66 @@ public class Loader {
 
     }
 
-    private void parseHtml() {
-        Document html = Jsoup.parse(content.toString());
-        List<String> imgPaths = new ArrayList<>();
+    private void parseHtml(String webPath) throws IOException {
+        Document html = Jsoup.parse(new URL(webPath), 1000);
 
         Elements elements = html.select("a[href^=http]");
 
         for(Element tmp : elements){
             paths.add(tmp.attr("href"));
         }
-//
-//        for(String tmp : imgPaths){
-//            if(tmp.startsWith("http")){
-//                paths.add(tmp);
-//            }
-//        }
 
         System.out.println(paths.size() + " files founded");
     }
 
+    public void surfingPage(String webPath) {
+        try{
+            Document html = Jsoup.parse(new URL(webPath), 1000);
+
+            Elements links = html.select("a[href^=http]");
+            Elements img = html.select("img[src^=http]");
+
+            for(Element tmp : links){
+
+                String newLink = tmp.attr("href");
+                if(!paths.contains(newLink)){
+                    paths.add(tmp.attr(newLink));
+                    surfingPage(newLink);
+                }
+
+            }
+
+            for(Element tmp : img){
+                images.add(img.attr("src"));
+            }
+
+            showElements(links);
+
+        }catch (IOException e){
+            System.out.println("bad link");
+        }
+    }
+
+    public void showAllImgLinks(){
+        for(String str : images){
+            System.out.println(str);
+        }
+    }
+
+    private void showElements(Elements elements) {
+        for (Element element : elements) {
+            System.out.println(String.format(" * a: <%s>  (%s)", element.attr("abs:href"), trim(element.text(), 35)));
+        }
+    }
+
+    private String trim(String s, int width) {
+        if (s.length() > width)
+            return s.substring(0, width-1) + ".";
+        else
+            return s;
+    }
+
+    @Deprecated
     private void loadHtml(String path) throws IOException, InterruptedException {
         URL url = new URL(path);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();

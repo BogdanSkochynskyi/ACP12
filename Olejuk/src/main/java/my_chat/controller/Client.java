@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class Client {
 
-    Socket socket;
+    private Socket socket;
 
     public void run(String ip, int port) throws IOException {
         connect(ip, port);
@@ -83,4 +83,13 @@ public class Client {
     public OutputStream getOutputStream() throws IOException {
         return socket.getOutputStream();
     }
+
+    public void disconnect(){
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
