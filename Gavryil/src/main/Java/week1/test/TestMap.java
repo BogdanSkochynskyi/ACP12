@@ -31,6 +31,9 @@ public class TestMap {
         System.out.printf("result %s, input %s, expected size %d, actual size %d",
                                     putRes, inputPut, expectedPut, actualPut);
 
+        int myList [] = {4, 3, 7};
+        int arr[] [] = {{4,3,5},{3,4}};
+        int ar2[] =new int[5];
 
     }
 }
