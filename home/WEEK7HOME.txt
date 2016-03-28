@@ -1,0 +1,15 @@
+1. Implement minimum ten methods of business logic using JPA
+	must be 
+	- unit tests
+	- JPQL
+	- DAO pattern
+	
+	
+You can write
+1) own project
+2) notebook shop
+3) testio project
+
+Wish you good week!
+
+

@@ -63,6 +63,17 @@
             <version>5.1.6</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>1.0.0.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+            <version>1.4.01</version>
+        </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -76,7 +87,11 @@
             <version>${hibernate-version}</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
 
     </dependencies>
 
