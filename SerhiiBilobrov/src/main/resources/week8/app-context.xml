@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <!-- id="myUser"-->
+    <bean class="ua.artcode.week8.ioc.model.MyUser">
+        <constructor-arg name="email" value="ADMIN"/>
+        <constructor-arg name="pass" value="12345"/>
+    </bean>
+
+    <bean id="dbBean" class="ua.artcode.week8.ioc.db.AppDB" scope="singleton"/>
+
+    <bean id="dao" class="ua.artcode.week8.ioc.dao.GeneralDao">
+        <property name="db" ref="dbBean"/>
+    </bean>
+
+    <bean id="validator" class="ua.artcode.week8.ioc.validator.GeneralValidator"/>
+
+    <bean id="service" class="ua.artcode.week8.ioc.service.MyService">
+        <property name="validator" ref="validator"/>
+        <property name="genDao" ref="dao"/>
+    </bean>
+
+
+
+
+</beans>
