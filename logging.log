@@ -3711,3 +3711,21 @@
 2016-03-27 13:51:16 INFO  LobCreatorBuilderImpl:98 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
 2016-03-27 13:51:17 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
 2016-03-27 13:51:18 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-04-02 11:50:31 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: myunit
+	...]
+2016-04-02 11:50:31 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-04-02 11:50:31 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-04-02 11:50:31 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-04-02 11:50:31 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-04-02 11:50:32 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-04-02 11:50:32 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testio]
+2016-04-02 11:50:32 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root}
+2016-04-02 11:50:32 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-04-02 11:50:32 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-04-02 13:43:47 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@14899482: startup date [Sat Apr 02 13:43:47 EEST 2016]; root of context hierarchy
+2016-04-02 13:43:47 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [week8/app-context.xml]
+2016-04-02 13:44:33 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@14899482: startup date [Sat Apr 02 13:44:33 EEST 2016]; root of context hierarchy
+2016-04-02 13:44:33 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [week8/app-context.xml]
+2016-04-02 13:44:57 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6f1fba17: startup date [Sat Apr 02 13:44:57 EEST 2016]; root of context hierarchy
+2016-04-02 13:44:58 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [week8/app-context.xml]

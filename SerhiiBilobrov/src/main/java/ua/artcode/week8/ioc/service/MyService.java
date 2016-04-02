@@ -12,6 +12,7 @@ import ua.artcode.week8.ioc.validator.GeneralValidator;
  */
 public class MyService {
 
+
     private GeneralDao genDao;
     private GeneralValidator validator;
 
@@ -35,4 +36,19 @@ public class MyService {
         throw new MyLoginException("Wrong email or pass");
     }
 
+    public GeneralDao getGenDao() {
+        return genDao;
+    }
+
+    public void setGenDao(GeneralDao genDao) {
+        this.genDao = genDao;
+    }
+
+    public GeneralValidator getValidator() {
+        return validator;
+    }
+
+    public void setValidator(GeneralValidator validator) {
+        this.validator = validator;
+    }
 }
