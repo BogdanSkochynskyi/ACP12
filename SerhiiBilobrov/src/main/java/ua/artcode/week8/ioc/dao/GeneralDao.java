@@ -1,15 +1,15 @@
 package ua.artcode.week8.ioc.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ua.artcode.week8.ioc.common.Inject;
 import ua.artcode.week8.ioc.db.AppDB;
 import ua.artcode.week8.ioc.model.MyUser;
 
-/**
- * Created by serhii on 02.04.16.
- */
+@Component
 public class GeneralDao {
 
-    @Inject
+    @Autowired
     private AppDB db;
 
     private String name;

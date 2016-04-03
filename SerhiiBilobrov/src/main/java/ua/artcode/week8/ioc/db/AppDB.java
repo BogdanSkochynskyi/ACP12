@@ -1,13 +1,13 @@
 package ua.artcode.week8.ioc.db;
 
+import org.springframework.stereotype.Component;
 import ua.artcode.week8.ioc.model.MyUser;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by serhii on 02.04.16.
- */
+@Component(value = "appDbBean")
+// <bean id="appDbBean" class="ua.artcode.week8.ioc.db.AppDB">
 public class AppDB {
 
     private Map<String,MyUser> userMap;
