@@ -5,10 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ua.artcode.testio.model.Student;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceContext;
+import javax.persistence.*;
 import java.util.List;
 
 @Component
@@ -44,8 +41,15 @@ public final class StudentDaoImpl implements StudentDao {
     @Transactional
     public Student find(String login) {
 
-        return manager.createQuery("SELECT s FROM Student s WHERE s.name =:name", Student.class)
-                .setParameter("name", login).getSingleResult();
+        TypedQuery<Student> query = manager.createQuery("SELECT s FROM Student s WHERE s.name =:name", Student.class)
+                .setParameter("name", login);
+        List<Student> students = query.getResultList();
+
+        if(students == null || students.isEmpty()){
+            return null;
+        }
+
+        return students.get(0);
     }
 
     @Override
