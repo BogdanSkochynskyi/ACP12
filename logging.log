@@ -3850,3 +3850,108 @@
 2016-04-03 13:19:09 INFO  LobCreatorBuilderImpl:98 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
 2016-04-03 13:19:10 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
 2016-04-03 13:19:10 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-04-16 11:45:47 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61064425: startup date [Sat Apr 16 11:45:47 EEST 2016]; root of context hierarchy
+2016-04-16 11:45:47 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring-context.xml]
+2016-04-16 11:45:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [orm-spring-context.xml]
+2016-04-16 11:45:49 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2016-04-16 11:45:50 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+2016-04-16 11:45:51 INFO  LocalContainerEntityManagerFactoryBean:339 - Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-04-16 11:45:51 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-04-16 11:45:51 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-04-16 11:45:51 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-04-16 11:45:51 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-04-16 11:45:52 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-04-16 11:45:52 WARN  JdbcEnvironmentInitiator:132 - HHH000342: Could not obtain connection to query metadata : Communications link failure
+
+Last packet sent to the server was 1 ms ago.
+2016-04-16 11:45:52 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-04-16 11:45:53 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2016-04-16 11:45:54 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-04-16 11:45:54 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [orm-spring-context.xml]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory
+2016-04-16 11:47:48 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1f28c152: startup date [Sat Apr 16 11:47:48 EEST 2016]; root of context hierarchy
+2016-04-16 11:47:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring-context.xml]
+2016-04-16 11:47:51 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [orm-spring-context.xml]
+2016-04-16 11:47:52 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2016-04-16 11:47:52 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+2016-04-16 11:47:53 INFO  LocalContainerEntityManagerFactoryBean:339 - Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-04-16 11:47:53 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-04-16 11:47:53 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-04-16 11:47:53 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-04-16 11:47:53 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-04-16 11:47:53 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-04-16 11:47:54 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-04-16 11:47:55 INFO  LobCreatorBuilderImpl:98 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2016-04-16 11:47:56 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-04-16 11:47:57 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-04-16 11:49:06 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1f28c152: startup date [Sat Apr 16 11:49:06 EEST 2016]; root of context hierarchy
+2016-04-16 11:49:07 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring-context.xml]
+2016-04-16 11:49:09 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [orm-spring-context.xml]
+2016-04-16 11:49:10 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2016-04-16 11:49:11 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+2016-04-16 11:49:11 INFO  LocalContainerEntityManagerFactoryBean:339 - Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-04-16 11:49:11 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-04-16 11:49:11 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-04-16 11:49:11 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-04-16 11:49:11 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-04-16 11:49:11 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-04-16 11:49:13 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-04-16 11:49:13 INFO  LobCreatorBuilderImpl:98 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2016-04-16 11:49:14 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-04-16 11:49:15 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-04-16 11:50:36 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1f28c152: startup date [Sat Apr 16 11:50:36 EEST 2016]; root of context hierarchy
+2016-04-16 11:50:36 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring-context.xml]
+2016-04-16 11:50:38 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [orm-spring-context.xml]
+2016-04-16 11:50:39 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2016-04-16 11:50:40 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+2016-04-16 11:50:40 INFO  LocalContainerEntityManagerFactoryBean:339 - Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-04-16 11:50:40 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-04-16 11:50:41 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-04-16 11:50:41 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-04-16 11:50:41 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-04-16 11:50:41 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-04-16 11:50:42 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-04-16 11:50:42 INFO  LobCreatorBuilderImpl:98 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2016-04-16 11:50:44 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-04-16 11:50:44 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-04-16 13:07:54 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@61064425: startup date [Sat Apr 16 13:07:54 EEST 2016]; root of context hierarchy
+2016-04-16 13:07:54 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring-context.xml]
+2016-04-16 13:07:55 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [orm-spring-context.xml]
+2016-04-16 13:07:56 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2016-04-16 13:07:57 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+2016-04-16 13:07:57 INFO  LocalContainerEntityManagerFactoryBean:339 - Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-04-16 13:07:58 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-04-16 13:07:58 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-04-16 13:07:58 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-04-16 13:07:58 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-04-16 13:07:58 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-04-16 13:07:59 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-04-16 13:07:59 INFO  LobCreatorBuilderImpl:98 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2016-04-16 13:08:01 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-04-16 13:08:01 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-04-16 13:13:52 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1f28c152: startup date [Sat Apr 16 13:13:52 EEST 2016]; root of context hierarchy
+2016-04-16 13:13:52 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring-context.xml]
+2016-04-16 13:13:54 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [orm-spring-context.xml]
+2016-04-16 13:13:55 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2016-04-16 13:13:56 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+2016-04-16 13:13:57 INFO  LocalContainerEntityManagerFactoryBean:339 - Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-04-16 13:13:57 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-04-16 13:13:57 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-04-16 13:13:57 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-04-16 13:13:57 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-04-16 13:13:57 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-04-16 13:13:58 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-04-16 13:13:58 INFO  LobCreatorBuilderImpl:98 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2016-04-16 13:14:00 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-04-16 13:14:01 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
