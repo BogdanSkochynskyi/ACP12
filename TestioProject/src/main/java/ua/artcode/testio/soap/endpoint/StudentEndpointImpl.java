@@ -44,8 +44,13 @@ public class StudentEndpointImpl implements StudentEndpoint {
     @Override
     public StudentList getAll(int start, int lenght) {
 
-        StudentList studentList = new StudentList();
+
         List<Student> students = studentService.getAll(start,lenght);
+        return getStudentList(students);
+    }
+
+    private StudentList getStudentList(List<Student> students) {
+        StudentList studentList = new StudentList();
         List<StudentDTO> studentDTOs = new ArrayList<>();
 
         for (Student student : students) {
