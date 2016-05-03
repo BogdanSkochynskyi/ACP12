@@ -4,11 +4,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Properties;
 
 /**
  * Created by gavri on 25.02.2016.
  */
-public class MyScanner {
+public class MyScanner implements AutoCloseable {
 
     public static final int BUFFER_CAPACITY = 1000;
     private char[] data = null;
@@ -152,7 +153,7 @@ public class MyScanner {
     public String nextLine() {
         String remains = "";
         for (; currentPosition < data.length; currentPosition++) {
-            if (data[currentPosition] == Character.LINE_SEPARATOR) {
+            if (data[currentPosition] == Character.LINE_SEPARATOR||data[currentPosition] == '\n') {
                 char[] tmpArray = new char[currentPosition - currentStartPosition];
                 System.arraycopy(data, currentStartPosition, tmpArray, 0, currentPosition - currentStartPosition);
                 currentPosition++;
@@ -241,8 +242,10 @@ public class MyScanner {
         return false;
     }
 
-
-
+    @Override
+    public void close() throws Exception {
+        if (reader != null) this.reader.close();
+    }
 
 
     // Constructor which allows you to download whole file to char[] during creation of myScanner object

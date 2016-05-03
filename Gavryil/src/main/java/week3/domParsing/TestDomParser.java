@@ -14,9 +14,8 @@ import java.io.IOException;
  */
 public class TestDomParser {
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
-        File file = new File("Gavryil/src/main/resources/company.xml");
         File file2 = new File("Gavryil/src/main/resources/books.xml");
-        Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+        Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file2);
         Element element = doc.getDocumentElement();
 
         //System.out.println("<?xml version="+"\""+doc.getXmlVersion()+"\"" + " encoding="+"\""+doc.getXmlEncoding()+"\""+"?>");

@@ -52,7 +52,7 @@ public class MyScannerTest {
         System.out.println("****************************************");
 
 
-        Reader reader1 = new InputStreamReader(new FileInputStream("Gavryil/src/main/resources/.txt"));
+        Reader reader1 = new InputStreamReader(new FileInputStream("Gavryil/src/main/resources/try.txt"));
         MyScanner sc3 = new MyScanner(reader1);
         System.out.println(sc3.next());
 

@@ -11,7 +11,7 @@ import java.util.List;
 public class DownloaderTest {
 
     public static final String URL = "http://www.ex.ua/11656119";
-    public static final String DEST = "E:\\download\\";
+    public static final String DEST = "/home/kroshkamedevd/Downloads";
 
     public static void main(String[] args) throws IOException, ParserConfigurationException {
        // MyDownloader.load(URL, DEST);
